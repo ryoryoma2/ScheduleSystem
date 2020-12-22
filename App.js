@@ -44,9 +44,6 @@ class App extends React.Component {
             <div className="Login">
                 <header className="Login-header">
                     <form onSubmit={this.onSubmit}>
-                        <p>
-                            test
-                        </p>
                         <Router>
 
                             <Route path='/New registration' component={NewR} />
