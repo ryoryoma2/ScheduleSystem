@@ -44,25 +44,21 @@ class Login extends React.Component {
           <form onSubmit={this.onSubmit}>
 
             <div>
-              <p>ユーザID　<input type="text" value={this.state.desc}
-                onChange={this.onTextAreaChange} /></p>
+              <div>
+                <p>ユーザID　<input type="text" value={this.state.desc}
+                  onChange={this.onTextAreaChange} /></p>
 
-              <p>パスワード<input type="text" value={this.state.desc1}
-                onChange={this.onTextAreaChange2} /></p>
+                <p>パスワード<input type="text" value={this.state.desc1}
+                  onChange={this.onTextAreaChange2} /></p>
+              </div>
+              <Button buttonname={'新規登録'} linkname={"/New registration"} className="under_button"
+              />
+
+              <Button buttonname={'ログイン'} linkname={"/TopScreenTeacher"} className="under_button"
+              />
+
             </div>
 
-            <Router>
-              <div>
-                <Button buttonname={'新規登録'} linkname={"/New registration"} className="under_button"
-                />
-
-                <Button buttonname={'ログイン'} linkname={"/TopScreenTeacher"} className="under_button"
-                />
-
-              </div>
-              <Route path='/New registration' component={NewR} />
-              <Route path='/TopScreenTeacher' component={TopScreenTeacher} />
-            </Router>
           </form>
         </header>
       </div>

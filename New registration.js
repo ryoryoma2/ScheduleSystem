@@ -1,7 +1,6 @@
 import React from 'react';
-import './App.css';
-var React = require('react');
-
+import './Login.css';
+import Button from './components/Button/Button';
 
 class NewR extends React.Component {
     constructor(props) {
@@ -12,8 +11,14 @@ class NewR extends React.Component {
             desc3: 'ここに入力',
             desc4: 'ここに入力',
             desc5: 'ここに入力',
-            desc6: 'ここに入力'
+            desc6: 'ここに入力',
+            //チェックボックス
+            check1: true,
+            check2: false,
+            //ラジオ
+            radio1: ""
         };
+
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.onTextAreaChange = this.onTextAreaChange.bind(this);
@@ -22,6 +27,8 @@ class NewR extends React.Component {
         this.onTextAreaChange4 = this.onTextAreaChange4.bind(this);
         this.onTextAreaChange5 = this.onTextAreaChange5.bind(this);
         this.onTextAreaChange6 = this.onTextAreaChange6.bind(this);
+
+        this.onRadioChange = this.onRadioChange.bind(this);//radio
     }
 
     onChange(e) {
@@ -59,36 +66,58 @@ class NewR extends React.Component {
         this.setState({ desc6: e.target.value });
     }
 
+    //radio
+    onRadioChange(e) {
+        console.log(e.target.value);
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
     render() {
         return (
-            <div className="NewR">
-                <header className="NewR-header">
-                    <form onSubmit={this.onSubmit}>
+            <div className="Login">
+                <header className="Login-header">
 
-                        <div>
-                            <p>氏名　　　<input type="text" value={this.state.desc}
-                                onChange={this.onTextAreaChange} />
-                                <input type="text" value={this.state.desc2}
-                                    onChange={this.onTextAreaChange2} />
-                            </p>
+                    <div>
+                        <div class="radio0">
 
-                            <p>ユーザID　<input type="text" value={this.state.desc3}
-                                onChange={this.onTextAreaChange3} /></p>
+                            <input type="radio"
+                                name="radio1"
+                                value="生徒"
+                                checked={this.state.radio1 === "生徒"} onChange={this.onRadioChange} /> 生徒　<br />
 
-                            <p>パスワード<input type="text" value={this.state.desc4}
-                                onChange={this.onTextAreaChange4} /></p>
-
-                            <p>電話番号　<input type="text" value={this.state.desc5}
-                                onChange={this.onTextAreaChange5} /></p>
-
-                            <p>住所　　　<input type="text" value={this.state.desc6}
-                                onChange={this.onTextAreaChange6} /></p>
+                            <input type="radio"
+                                name="radio1"
+                                value="講師"
+                                checked={this.state.radio1 === "講師"} onChange={this.onRadioChange} /> 講師　<br />
                         </div>
 
-                        <div>
-                            <button type="submit">登録</button>
-                        </div>
-                    </form>
+
+                        <p>氏名　　　<input type="text" value={this.state.desc}
+                            onChange={this.onTextAreaChange} />
+                            <input type="text" value={this.state.desc2}
+                                onChange={this.onTextAreaChange2} />
+                        </p>
+
+                        <p>ユーザID　<input type="text" value={this.state.desc3}
+                            onChange={this.onTextAreaChange3} /></p>
+
+                        <p>パスワード<input type="text" value={this.state.desc4}
+                            onChange={this.onTextAreaChange4} /></p>
+
+                        <p>電話番号　<input type="text" value={this.state.desc5}
+                            onChange={this.onTextAreaChange5} /></p>
+
+                        <p>住所　　　<input type="text" value={this.state.desc6}
+                            onChange={this.onTextAreaChange6} /></p>
+                    </div>
+
+
+                    <div>
+                        <Button buttonname={'登録'} linkname={"/"} className="under_button"
+                        />
+                    </div>
                 </header>
             </div>
         );
