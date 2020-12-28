@@ -1,14 +1,12 @@
 // インポート
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Button from './components/Button/Button';
-import TopScreenTeacher from './TopScreenTeacher';
-import ScheduleRegisterT from './ScheduleRegisterT';
+
 
 
 // ファイルの実質上の中身
-class TopScreenTeacherScreenStudent extends Component {
+class TopScreenStudent extends Component {
 
 
   // イベントハンドラー
@@ -24,27 +22,23 @@ class TopScreenTeacherScreenStudent extends Component {
 
 
     return (
-      <div className="App">
-          <Router>
-            <div>
-              <Button buttonname={'日程'} linkname={"/ScheduleRegisterT"} className= "button"
-              />
-         
-              <Button buttonname={'宿題提出'} linkname={"/TopScreenTeacher"} className = "button"
-              />
+      <div className="TopScreenStudent">
+        <header className="App-header">
+          <div>
+            <Button buttonname={'日程'} linkname={"/ScheduleRegisterT"} className="button"
+            />
 
-              <Button buttonname={'ログアウト'} className="button"
-              />
-         
-              <Route path='/TopScreenTeacher' component={TopScreenTeacher} />
-              <Route path='/ScheduleRegisterT' component={ScheduleRegisterT} />
-            </div>
-          </Router>
+            <Button buttonname={'宿題提出'} linkname={"/TopScreenTeacher"} className="button"
+            />
 
+            <Button buttonname={'ログアウト'} linkname={"/Login"} className="button"
+            />
+          </div>
+        </header>
       </div>
     );
   }
 }
 
 // エクスポート
-export default TopScreenTeacher;
+export default TopScreenStudent;

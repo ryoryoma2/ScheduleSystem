@@ -1,23 +1,25 @@
 import React from 'react';
 import './Login.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Button from './components/Button/Button';
 import NewR from './New registration';
 import Login from './Login';
 import ScheduleRegisterT from './ScheduleRegisterT';
 import TopScreenTeacher from './TopScreenTeacher';
+import TopScreenStudent from './TopScreenStudent';
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            desc: 'ここに入力',
-            desc1: 'ここに入力'
+            ID: 'ここに入力',
+            Password: 'ここに入力',
+            loginlink: './Login'
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.onTextAreaChange = this.onTextAreaChange.bind(this);
         this.onTextAreaChange2 = this.onTextAreaChange2.bind(this);
+        this.determine_ID = this.determine_ID.bind(this);
     }
 
     onChange(e) {
@@ -32,11 +34,24 @@ class App extends React.Component {
     }
 
     onTextAreaChange(e) {
-        this.setState({ desc: e.target.value });
+        this.setState({ ID: e.target.value });
     }
 
     onTextAreaChange2(e) {
-        this.setState({ desc1: e.target.value });
+        this.setState({ Password: e.target.value });
+    }
+
+    determine_ID() {//idから生徒か講師か判別する
+        //this.setState({linkname: LoginProcessing } );
+        if (this.state.ID.match("^t")) {
+            this.setState({ loginlink: '/TopScreenTeacher' })
+            // this.setState({component: TopScreenTeacher  })
+        } else if (this.state.ID.match("^s")) {
+            this.setState({ loginlink: '/TopScreenStudent' })
+            // this.setState({component: TopScreenStudent })
+        } else {
+
+        }
     }
 
     render() {
@@ -50,6 +65,7 @@ class App extends React.Component {
                             <Route path='/TopScreenTeacher' component={TopScreenTeacher} />
                             <Route exact path='/' component={Login} />
                             <Route path='/ScheduleRegisterT' component={ScheduleRegisterT} />
+                            <Route path={'/TopScreenStudent'} component={TopScreenStudent} />
                         </Router>
 
                     </form>

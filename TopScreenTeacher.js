@@ -23,16 +23,16 @@ class TopScreenTeacher extends React.Component {
       <div className="TopScreenTeacher">
         <header className="App-header">
           <div>
-            <Button buttonname={'日程'} linkname={"/ScheduleRegisterT"} className="under_button"
+            <Button buttonname={'日程'} linkname={"/ScheduleRegisterT"} className="button"
             />
 
-            <Button buttonname={'宿題設定'} linkname={"/TopScreenTeacher"} className="under_button"
+            <Button buttonname={'宿題設定'} linkname={"/TopScreenTeacher"} className="button"
             />
 
-            <Button buttonname={'宿題閲覧'} linkname={"/TopScreenTeacher"} className="under_button"
+            <Button buttonname={'宿題閲覧'} linkname={"/TopScreenTeacher"} className="button"
             />
 
-            <Button buttonname={'ログアウト'} linkname={"/"} className="under_button"
+            <Button buttonname={'ログアウト'} linkname={"/"} className="button"
             />
           </div>
         </header>
