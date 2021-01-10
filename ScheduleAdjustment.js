@@ -2,12 +2,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import Button from './components/Button/Button';
-import UnderButton from './components/UnderButton/UnderButton';
 import Calendar from './components/Calendar/Calendar';
 
 
 // ファイルの実質上の中身
-class ScheduleRegisterT extends Component {
+class ScheduleAdjustment extends Component {
 
     // イベントハンドラー
     onClickHandler = () => {
@@ -19,19 +18,13 @@ class ScheduleRegisterT extends Component {
 
     render() {
         return (
-            <div className="ScheduleRegisterT">
+            <div className="ScheduleAdjustment">
                 <Calendar></Calendar>
                 <Button buttonname={'Topに戻る'} linkname={"/TopScreenTeacher"} className="under_button"
                 />
 
-                {/* データベースに日程を登録 */}
-                <UnderButton ubuttonname={'日程登録'}
-                />
-
-                <Button buttonname={'日程調整'} linkname={"/ScheduleAdjustment"} className="under_button"
-                />
-
-                <Button buttonname={'日程確認'} linkname={"/ScheduleConfirmationT"} className="under_button"
+                {/* 講師と生徒の日程から授業日程を決定する */}
+                <Button buttonname={'調整'} linkname={"/TopScreenTeacher"} className="under_button"
                 />
 
             </div>
@@ -40,4 +33,4 @@ class ScheduleRegisterT extends Component {
 }
 
 // エクスポート
-export default ScheduleRegisterT;
+export default ScheduleAdjustment;

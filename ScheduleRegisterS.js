@@ -7,7 +7,7 @@ import Calendar from './components/Calendar/Calendar';
 
 
 // ファイルの実質上の中身
-class ScheduleRegisterT extends Component {
+class ScheduleRegisterS extends Component {
 
     // イベントハンドラー
     onClickHandler = () => {
@@ -19,19 +19,16 @@ class ScheduleRegisterT extends Component {
 
     render() {
         return (
-            <div className="ScheduleRegisterT">
+            <div className="ScheduleRegisterS">
                 <Calendar></Calendar>
-                <Button buttonname={'Topに戻る'} linkname={"/TopScreenTeacher"} className="under_button"
+                <Button buttonname={'Topに戻る'} linkname={"/TopScreenStudent"} className="under_button"
                 />
 
-                {/* データベースに日程を登録 */}
-                <UnderButton ubuttonname={'日程登録'}
+                {/* データベースに登録する操作 */}
+                <Button buttonname={'日程登録'} linkname={"/TopScreenStudent"} className="under_button"
                 />
 
-                <Button buttonname={'日程調整'} linkname={"/ScheduleAdjustment"} className="under_button"
-                />
-
-                <Button buttonname={'日程確認'} linkname={"/ScheduleConfirmationT"} className="under_button"
+                <Button buttonname={'日程確認'} linkname={"/ScheduleConfirmationS"} className="under_button"
                 />
 
             </div>
@@ -40,4 +37,4 @@ class ScheduleRegisterT extends Component {
 }
 
 // エクスポート
-export default ScheduleRegisterT;
+export default ScheduleRegisterS;
