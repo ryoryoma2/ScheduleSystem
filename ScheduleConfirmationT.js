@@ -20,7 +20,7 @@ class ScheduleConfirmationT extends Component {
         return (
             <div className="">
                 <Calendar></Calendar>
-                <Button buttonname={'戻る'} linkname={"/TopScreenTeacher"} className="under_button"
+                <Button buttonname={'戻る'} linkname={"/ScheduleRegisterT"} className="under_button"
                 />
             </div>
         );

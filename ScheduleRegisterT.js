@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Button from './components/Button/Button';
-import UnderButton from './components/UnderButton/UnderButton';
 import Calendar from './components/Calendar/Calendar';
 
 
@@ -25,7 +24,7 @@ class ScheduleRegisterT extends Component {
                 />
 
                 {/* データベースに日程を登録 */}
-                <UnderButton ubuttonname={'日程登録'}
+                <Button buttonname={'日程登録'} linkname={"/TopScreenTeacher"} className="under_button"
                 />
 
                 <Button buttonname={'日程調整'} linkname={"/ScheduleAdjustment"} className="under_button"

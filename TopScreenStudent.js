@@ -25,13 +25,13 @@ class TopScreenStudent extends Component {
       <div className="TopScreenStudent">
         <header className="App-header">
           <div>
-            <Button buttonname={'日程'} linkname={"/ScheduleRegisterT"} className="button"
+            <Button buttonname={'日程'} linkname={"/ScheduleRegisterS"} className="button"
             />
 
-            <Button buttonname={'宿題提出'} linkname={"/TopScreenTeacher"} className="button"
+            <Button buttonname={'宿題提出'} linkname={"/TopScreenStudent"} className="button"
             />
 
-            <Button buttonname={'ログアウト'} linkname={"/Login"} className="button"
+            <Button buttonname={'ログアウト'} linkname={"/"} className="button"
             />
           </div>
         </header>
