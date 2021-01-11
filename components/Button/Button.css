@@ -15,8 +15,19 @@ button.button:hover{
 
 button.under_button{
     bottom: 0;
-    padding: 30px 10px;
+    padding: 20px 10px;
+    vertical-align: middle;
+    width: 320px;
+    display: table-cell;
+    border: 1px solid;
+    cursor: pointer;
+}
+
+button.Login_under_button{
+    bottom: 0;
+    padding: 20px 10px;
     width: 100px;
+    margin: 0px 40px;
     display: table-cell;
     justify-content: space-between;
     border: 1px solid;
@@ -29,4 +40,3 @@ button.under_button{
     justify-content: space-evenly;
     flex-wrap: nowrap;
 }
-
