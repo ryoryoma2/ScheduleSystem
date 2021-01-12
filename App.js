@@ -4,8 +4,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NewR from './New registration';
 import Login from './Login';
 import ScheduleRegisterT from './ScheduleRegisterT';
+import ScheduleRegisterS from './ScheduleRegisterS';
 import TopScreenTeacher from './TopScreenTeacher';
 import TopScreenStudent from './TopScreenStudent';
+import ScheduleConfirmationT from './ScheduleConfirmationT';
+import ScheduleConfirmationS from './ScheduleConfirmationS';
+import ScheduleAdjustment from './ScheduleAdjustment';
 
 class App extends React.Component {
     constructor(props) {
@@ -63,9 +67,13 @@ class App extends React.Component {
 
                             <Route path='/New registration' component={NewR} />
                             <Route path='/TopScreenTeacher' component={TopScreenTeacher} />
+                            <Route path={'/TopScreenStudent'} component={TopScreenStudent} />
                             <Route exact path='/' component={Login} />
                             <Route path='/ScheduleRegisterT' component={ScheduleRegisterT} />
-                            <Route path={'/TopScreenStudent'} component={TopScreenStudent} />
+                            <Route path='/ScheduleRegisterS' component={ScheduleRegisterS} />
+                            <Route path={'/ScheduleConfirmationT'} component={ScheduleConfirmationT} />
+                            <Route path={'/ScheduleConfirmationS'} component={ScheduleConfirmationS} />
+                            <Route path={'/ScheduleAdjustment'} component={ScheduleAdjustment} />
                         </Router>
 
                     </form>
