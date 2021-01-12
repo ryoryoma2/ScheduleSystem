@@ -22,7 +22,7 @@ function createData(homework, range, image) {
 }
 
 const rows = [
-    createData('数学', 'p92-p95','https://images.unsplash.com/photo-1551963831-b3b1ca40c98e'),
+    createData('数学', 'p92-p95'),
     createData('国語', 'p92-p95'),
     createData('理科', 'p92-p95'),
     createData('社会', 'p92-p95'),
