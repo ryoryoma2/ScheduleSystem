@@ -4,7 +4,7 @@ import './Joho.css';
 
 
 
-class NewR extends React.Component {
+class Joho extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -75,8 +75,8 @@ class NewR extends React.Component {
     }
     render() {
         return (
-            <div className="NewR">
-                <header className="NewR-header">
+            <div className="Joho">
+                <header className="Joho-header">
                     <form onSubmit={this.onSubmit}>
 
         <br/>
@@ -123,10 +123,16 @@ class NewR extends React.Component {
       onCharge={this.onTextAreaCharge7}/>
  <header className="upgraded-button">
 <div>
-<button type="submit">検索</button>
+<button type="submit">削除</button>
                         </div>
                         </header>
                         </p>
+
+                        <header className="upgraded-button">
+<div>
+<button type="submit">戻る</button>
+                        </div>
+                        </header>
                         
                         </header>
 
@@ -137,5 +143,5 @@ class NewR extends React.Component {
     }
 }
 
-export default NewR;
+export default Joho;
 
