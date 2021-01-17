@@ -28,7 +28,7 @@ class TopScreenStudent extends Component {
             <Button buttonname={'日程'} linkname={"/ScheduleRegisterS"} className="button"
             />
 
-            <Button buttonname={'宿題提出'} linkname={"/TopScreenStudent"} className="button"
+            <Button buttonname={'宿題提出'} linkname={"/SubmitHomework"} className="button"
             />
 
             <Button buttonname={'ログアウト'} linkname={"/"} className="button"

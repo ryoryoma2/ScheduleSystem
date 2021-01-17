@@ -29,7 +29,7 @@ class TopScreenTeacher extends React.Component {
             <Button buttonname={'宿題設定'} linkname={"/HomeworkEdit"} className="button"
             />
 
-            <Button buttonname={'宿題閲覧'} linkname={"/TopScreenTeacher"} className="button"
+            <Button buttonname={'宿題閲覧'} linkname={"/ConfirmHomework"} className="button"
             />
 
             <Button buttonname={'生徒情報閲覧'} linkname={"/Joho"} className="button"

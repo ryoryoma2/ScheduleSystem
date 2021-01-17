@@ -1,7 +1,7 @@
 import React from 'react';
 import './Login.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import NewR from './New registration';
+import NewR from './NewRegistration';
 import Login from './Login';
 import ScheduleRegisterT from './ScheduleRegisterT';
 import ScheduleRegisterS from './ScheduleRegisterS';
@@ -10,6 +10,10 @@ import TopScreenStudent from './TopScreenStudent';
 import ScheduleConfirmationT from './ScheduleConfirmationT';
 import ScheduleConfirmationS from './ScheduleConfirmationS';
 import ScheduleAdjustment from './ScheduleAdjustment';
+import HomeworkEdit from './HomeworkEdit';
+import Joho from './Joho';
+import SubmitHomework from './SubmitHomework';
+import ConfirmHomework from './ConfirmHomework';
 
 class App extends React.Component {
     constructor(props) {
@@ -33,8 +37,7 @@ class App extends React.Component {
 
     onSubmit(e) {
         e.preventDefault();
-        console.log("onSubmit");
-        console.log(this.state);
+        console.log(e.target.value);
     }
 
     onTextAreaChange(e) {
@@ -62,21 +65,25 @@ class App extends React.Component {
         return (
             <div className="Login">
                 <header className="Login-header">
-                    <form onSubmit={this.onSubmit}>
-                        <Router>
-                            <Route path='/New registration' component={NewR} />
-                            <Route path='/TopScreenTeacher' component={TopScreenTeacher} />
-                            <Route path={'/TopScreenStudent'} component={TopScreenStudent} />
-                            <Route exact path='/' component={Login} />
-                            <Route path='/ScheduleRegisterT' component={ScheduleRegisterT} />
-                            <Route path='/ScheduleRegisterS' component={ScheduleRegisterS} />
-                            <Route path={'/ScheduleConfirmationT'} component={ScheduleConfirmationT} />
-                            <Route path={'/ScheduleConfirmationS'} component={ScheduleConfirmationS} />
-                            <Route path={'/ScheduleAdjustment'} component={ScheduleAdjustment} />
-                        </Router>
-                    </form>
+                    <Router>
+
+                        <Route path={'/New registration'} component={NewR} />
+                        <Route path={'/TopScreenTeacher'} component={TopScreenTeacher} />
+                        <Route path={'/TopScreenStudent'} component={TopScreenStudent} />
+                        <Route exact path={'/'} component={Login} />
+                        <Route path={'/ScheduleRegisterT'} component={ScheduleRegisterT} />
+                        <Route path={'/ScheduleRegisterS'} component={ScheduleRegisterS} />
+                        <Route path={'/ScheduleConfirmationT'} component={ScheduleConfirmationT} />
+                        <Route path={'/ScheduleConfirmationS'} component={ScheduleConfirmationS} />
+                        <Route path={'/ScheduleAdjustment'} component={ScheduleAdjustment} />
+                        <Route path={'/HomeworkEdit'} component={HomeworkEdit} />
+                        <Route path={'/Joho'} component={Joho} />
+                        <Route path={'/SubmitHomework'} component={SubmitHomework} />
+                        <Route path={'/ConfirmHomework'} component={ConfirmHomework} />
+                    </Router>
+
                 </header>
-            </div>
+            </div >
         );
     }
 }

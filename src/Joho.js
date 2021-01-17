@@ -1,5 +1,8 @@
 import React from 'react';
 import './Joho.css';
+import Button from './components/Button/Button';
+
+
 
 class Joho extends React.Component {
     constructor(props) {
@@ -8,11 +11,13 @@ class Joho extends React.Component {
             desc: 'ここに入力',
             desc2: 'ここに入力',
             desc3: 'ここに入力',
+
             desc4: 'ここに入力',
             desc5: 'ここに入力',
             desc6: 'ここに入力',
             desc7: 'ここに入力',
             desc8: 'ここに入力'
+
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -73,12 +78,13 @@ class Joho extends React.Component {
             <div className="Joho">
                 <header className="Joho-header">
                     <form onSubmit={this.onSubmit}>
-                        <br/>
-                        <br/>
+
+                        <br />
+                        <br />
                         <header className="Login-header">
                             <div>
-                                <p>右のバーに生徒番号を入力して検索することができます。
-                                    <input type="text" value={this.state.desc7}
+                                <p>右のバーに生徒番号を入力して検索することができます。ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
+<input type="text" value={this.state.desc7}
                                         onCharge={this.onTextAreaCharge7} />
                                     <header className="upgraded-button">
                                         <div>
@@ -112,8 +118,8 @@ class Joho extends React.Component {
                                     <button type="submit">登録</button>
                                 </div>
                             </header>
-                            <p>右のバーに生徒番号を入力して削除することができます。
-                                <input type="text" value={this.state.desc7}
+                            <p>右のバーに生徒番号を入力して削除することができます。ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
+<input type="text" value={this.state.desc7}
                                     onCharge={this.onTextAreaCharge7} />
                                 <header className="upgraded-button">
                                     <div>
@@ -121,12 +127,16 @@ class Joho extends React.Component {
                                     </div>
                                 </header>
                             </p>
-                            <header className="upgraded-button">
+
+                            <header>
                                 <div>
-                                    <button type="submit">戻る</button>
+                                    <Button buttonname={'戻る'} linkname={"/TopScreenTeacher"} className="under_button"
+                                    />
                                 </div>
                             </header>
+
                         </header>
+
                     </form>
                 </header>
             </div>
@@ -135,4 +145,3 @@ class Joho extends React.Component {
 }
 
 export default Joho;
-

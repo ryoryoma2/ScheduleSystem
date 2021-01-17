@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Button from '@material-ui/core/Button';
+import Button from './components/Button/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Table from '@material-ui/core/Table';
@@ -11,9 +11,10 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+
 const useStyles = makeStyles((theme) => ({
     table: {
-        minWidth: 500,
+        minWidth: 1000,
     },
 }));
 
@@ -29,13 +30,13 @@ const rows = [
     createData('英語', 'p92-p95'),
 ];
 
-export default function BasicTextFields() {
+export default function HomeworkEdit() {
     const classes = useStyles();
 
     return (
         <form className={classes.root} noValidate autoComplete="off">
             <TextField id="studentIDSerach" label="生徒ID" />
-            <Button variant="contained" color="primary">検索</Button>
+            <Button buttonname={'検索'} className="under_button" />
 
             <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="simple table">
@@ -57,7 +58,7 @@ export default function BasicTextFields() {
                     </TableBody>
                 </Table>
             </TableContainer>
-            <Button variant="contained" color="primary">TOPに戻る</Button>
+            <Button buttonname={'TOPに戻る'} linkname={"/TopScreenTeacher"} className="under_button" />
         </form>
     );
 }

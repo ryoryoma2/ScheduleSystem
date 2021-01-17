@@ -1,14 +1,14 @@
-.App {
+.SubmitHomework {
     text-align: center;
   }
   
   @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
+    .SubmitHomework-logo {
       animation: App-logo-spin infinite 20s linear;
     }
   }
   
-  .App-header {
+  .SubmitHomework-header {
     background-color: #282c34;
     min-height: 100vh;
     display: flex;
@@ -19,17 +19,6 @@
     color: white;
   }
   
-  .App-link {
+  .SubmitHomework-link {
     color: #61dafb;
-  }
-
-  
-  
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
   }

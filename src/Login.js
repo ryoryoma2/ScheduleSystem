@@ -1,6 +1,8 @@
 import React from 'react';
 import './Login.css';
 import Button from './components/Button/Button';
+import axios from 'axios';
+
 
 
 class Login extends React.Component {
@@ -10,7 +12,8 @@ class Login extends React.Component {
     this.state = {
       ID: 'ここに入力',
       Password: 'ここに入力',
-      loginlink: '/'
+      loginlink: '/',
+      rooms: []
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -26,8 +29,7 @@ class Login extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    console.log("onSubmit");
-    console.log(this.state);
+    console.log(e.target.value);
   }
 
   onTextAreaChange(e) {
@@ -38,34 +40,66 @@ class Login extends React.Component {
     this.setState({ Password: e.target.value });
   }
 
-  determine_ID() {//idから生徒か講師か判別する
+  determine_ID(e) {//idから生徒か講師か判別する
     if (this.state.ID.match("^t")) {
       this.setState({ loginlink: '/TopScreenTeacher' })
+      console.log("ID: " + this.state.ID);
+      console.log("PassWord: " + this.state.Password);
     } else if (this.state.ID.match("^s")) {
       this.setState({ loginlink: '/TopScreenStudent' })
+      console.log("ID: " + this.state.ID);
+      console.log("PassWord: " + this.state.Password);
     } else {
-
     }
   }
+
+  // componentDidMount() {
+  //   const url = "http://fe77eb74c5d3.ngrok.io";
+  //   axios.get(url).then((res) => {
+  //     console.log(res.data);
+  //     this.setState({ rooms: res.data });
+  //   });
+  // }
+
+  // //データベースからデータを受け取り表示する
+  // componentDidMount() {
+  //    axios.get('http://0c3914c8a05e.ngrok.io/', {
+  //      withCredentials: true,
+  //    });
+  //    axios.defaults.withCredentials = true; // global に設定してしまう場合
+
+  //   const url = " http://0c3914c8a05e.ngrok.io/";
+  //   axios.get(url).then((res) => {
+  //     res.setHeader("Access-Control-Allow-Origin", "*");
+  //     console.log(res.data);
+  //     this.setState({ rooms: res.data });
+  //   });
+  // }
+
+
 
   render() {
     return (
       <div className="Login">
         <header className="Login-header">
-          <form onSubmit={this.onSubmit}>
+          <div>
             <div>
-              <div>
-                <p>ユーザID　<input type="text" value={this.state.ID}
-                  onChange={this.onTextAreaChange} /></p>
-                <p>パスワード<input type="text" value={this.state.Password}
-                  onChange={this.onTextAreaChange2} /></p>
-              </div>
-              <Button buttonname={'新規登録'} linkname={"/New registration"} className="Login_under_button" />
-              <Button buttonname={'ログイン'} onClick={this.determine_ID} linkname={this.state.loginlink} className="Login_under_button" />
+
+              <p>ユーザID　<input type="text" value={this.state.ID}
+                onChange={this.onTextAreaChange} /></p>
+
+              <p>パスワード<input type="text" value={this.state.Password}
+                onChange={this.onTextAreaChange2} /></p>
             </div>
-          </form>
+
+            <Button buttonname={'新規登録'} linkname={"/New registration"} className="Login_under_button"
+            />
+
+            <Button buttonname={'ログイン'} onClick={this.determine_ID} linkname={this.state.loginlink} className="Login_under_button"
+            />
+          </div>
         </header>
-      </div>
+      </div >
     );
   }
 }
