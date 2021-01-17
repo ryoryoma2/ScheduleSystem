@@ -10,8 +10,8 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ID: 'ここに入力',
-      Password: 'ここに入力',
+      ID: '',
+      Password: '',
       loginlink: '/',
       rooms: []
     };
@@ -86,10 +86,12 @@ class Login extends React.Component {
             <div>
 
               <p>ユーザID　<input type="text" value={this.state.ID}
-                onChange={this.onTextAreaChange} /></p>
+                onChange={this.onTextAreaChange}
+                placeholder= "ここに入力" /></p>
 
               <p>パスワード<input type="text" value={this.state.Password}
-                onChange={this.onTextAreaChange2} /></p>
+                onChange={this.onTextAreaChange2}
+                placeholder= "ここに入力" /></p>
             </div>
 
             <Button buttonname={'新規登録'} linkname={"/New registration"} className="Login_under_button"

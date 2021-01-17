@@ -1,64 +1,119 @@
-import React from 'react';
+// インポート
+import React, { Component } from 'react';
 import './App.css';
 import Button from './components/Button/Button';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
-const useStyles = makeStyles((theme) => ({
-    table: {
-        minWidth: 1000,
+const homework = [
+    {
+        homweworkID: 0,
+        studentID: '00',
+        kamoku: '数学',
+        range: 'p,11-15'
     },
-}));
-
-function createData(homework, range) {
-    return { homework, range };
-}
-
-const rows = [
-    createData('数学', 'p92-p95'),
-    createData('国語', 'p92-p95'),
-    createData('理科', 'p92-p95'),
-    createData('社会', 'p92-p95'),
-    createData('英語', 'p92-p95'),
+    {
+        homweworkID: 1,
+        studentID: '00',
+        kamoku: '英語',
+        range: 'p,11-15'
+    },
+    {
+        homweworkID: 2,
+        studentID: '01',
+        kamoku: '数学',
+        range: 'p,11-15'
+    },
+    {
+        homweworkID: 3,
+        studentID: '01',
+        kamoku: '英語',
+        range: 'p,11-15'
+    }
 ];
 
-export default function HomeworkEdit() {
-    const classes = useStyles();
+const columns = [{
+    dataField: 'studentID',
+    text: '生徒 ID',
+    headerStyle: {
+        backgroundColor: '#FFFFFF'
+    }
+}, {
+    dataField: 'kamoku',
+    text: '科目',
+    editable: false,
+    headerStyle: {
+        backgroundColor: '#FFFFFF'
+    }
+}, {
+    dataField: 'range',
+    text: '範囲',
+    headerStyle: {
+        backgroundColor: '#FFFFFF'
+    },
+    searchable: false
+}];
 
-    return (
-        <form className={classes.root} noValidate autoComplete="off">
-            <TextField id="studentIDSerach" label="生徒ID" />
-            <Button buttonname={'検索'} className="under_button" />
+const cellEditProp = {
+    mode: 'click'
+};
 
-            <TableContainer component={Paper}>
-                <Table className={classes.table} aria-label="simple table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell align="center">科目</TableCell>
-                            <TableCell align="center">範囲</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {rows.map((row) => (
-                            <TableRow key={row.homework}>
-                                <TableCell component="th" scope="row" align="center">
-                                    {row.homework}
-                                </TableCell>
-                                <TableCell align="center">{row.range}</TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            <Button buttonname={'TOPに戻る'} linkname={"/TopScreenTeacher"} className="under_button" />
-        </form>
-    );
+
+function homeworkValidator(value) {
+    const response = { isValid: true, notification: { type: 'success', msg: '', title: '' } };
+    if (!value) {
+        response.isValid = false;
+        response.notification.type = 'error';
+        response.notification.msg = 'Value must be inserted';
+        response.notification.title = 'Requested Value';
+    } else {
+        return response;
+    }
 }
+
+const selectRowProp = {
+    mode: 'checkbox'
+};
+
+class Homeworkedit extends Component {
+    render() {
+        return (
+            <div className="Homeworkedit">
+                <header className="App-header">
+                    <BootstrapTable
+                        version='4'
+                        data={homework}
+                        cellEdit={cellEditProp}
+                        insertRow={true}
+                        tableStyle={{ backgroundColor: '#FFFFFF' }}
+                        deleteRow={true} selectRow={selectRowProp}>
+                        <TableHeaderColumn
+                            dataField='studentID'
+                            filter={{ type: 'TextFilter', delay: 1000, placeholder: "生徒IDを検索" }}>
+                            生徒 ID
+                        </TableHeaderColumn>
+                        <TableHeaderColumn dataField='kamoku'>科目</TableHeaderColumn>
+                        <TableHeaderColumn
+                            dataField='range'
+                            editable={{ validator: homeworkValidator }}>
+                            範囲
+                        </TableHeaderColumn>
+                        <TableHeaderColumn
+                            dataField='homweworkID'
+                            width="10%"
+                            isKey={true}
+                            autoValue={ true }
+                            >
+                            宿題ID
+                        </TableHeaderColumn>
+                    </BootstrapTable>
+                    <br></br>
+                    <Button buttonname={'TOPに戻る'} linkname={"/TopScreenTeacher"} className="under_button" />
+                </header>
+            </div>
+        );
+    }
+}
+
+// エクスポート
+export default Homeworkedit;
