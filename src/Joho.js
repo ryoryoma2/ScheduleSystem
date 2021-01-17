@@ -78,13 +78,12 @@ class Joho extends React.Component {
             <div className="Joho">
                 <header className="Joho-header">
                     <form onSubmit={this.onSubmit}>
-
                         <br />
                         <br />
                         <header className="Login-header">
                             <div>
                                 <p>右のバーに生徒番号を入力して検索することができます。ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
-<input type="text" value={this.state.desc7}
+                                    <input type="text" value={this.state.desc7}
                                         onCharge={this.onTextAreaCharge7} />
                                     <header className="upgraded-button">
                                         <div>
@@ -119,7 +118,7 @@ class Joho extends React.Component {
                                 </div>
                             </header>
                             <p>右のバーに生徒番号を入力して削除することができます。ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
-<input type="text" value={this.state.desc7}
+                                <input type="text" value={this.state.desc7}
                                     onCharge={this.onTextAreaCharge7} />
                                 <header className="upgraded-button">
                                     <div>
