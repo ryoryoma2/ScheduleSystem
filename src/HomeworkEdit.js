@@ -32,28 +32,6 @@ const homework = [
     }
 ];
 
-const columns = [{
-    dataField: 'studentID',
-    text: '生徒 ID',
-    headerStyle: {
-        backgroundColor: '#FFFFFF'
-    }
-}, {
-    dataField: 'kamoku',
-    text: '科目',
-    editable: false,
-    headerStyle: {
-        backgroundColor: '#FFFFFF'
-    }
-}, {
-    dataField: 'range',
-    text: '範囲',
-    headerStyle: {
-        backgroundColor: '#FFFFFF'
-    },
-    searchable: false
-}];
-
 const cellEditProp = {
     mode: 'click'
 };
@@ -86,12 +64,12 @@ class Homeworkedit extends Component {
                         cellEdit={cellEditProp}
                         insertRow={true}
                         tableStyle={{ backgroundColor: '#FFFFFF' }}
-                        deleteRow={true} selectRow={selectRowProp}>
+                        deleteRow={true} selectRow={selectRowProp}
+                    >
                         <TableHeaderColumn
                             dataField='studentID'
-                            filter={{ type: 'TextFilter', delay: 1000, placeholder: "生徒IDを検索" }}>
-                            生徒 ID
-                        </TableHeaderColumn>
+                            filter={{ type: 'TextFilter', delay: 1000, placeholder: "生徒IDを検索" }}
+                        >生徒 ID</TableHeaderColumn>
                         <TableHeaderColumn dataField='kamoku'>科目</TableHeaderColumn>
                         <TableHeaderColumn
                             dataField='range'
