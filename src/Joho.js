@@ -1,9 +1,6 @@
 import React from 'react';
 import './Joho.css';
 
-
-
-
 class Joho extends React.Component {
     constructor(props) {
         super(props);
@@ -11,13 +8,11 @@ class Joho extends React.Component {
             desc: 'ここに入力',
             desc2: 'ここに入力',
             desc3: 'ここに入力',
-            
             desc4: 'ここに入力',
             desc5: 'ここに入力',
             desc6: 'ここに入力',
             desc7: 'ここに入力',
             desc8: 'ここに入力'
-
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -65,77 +60,73 @@ class Joho extends React.Component {
     onTextAreaChange6(e) {
         this.setState({ desc6: e.target.value });
     }
-    onTextAreaCharge7(e){
+    onTextAreaCharge7(e) {
         this.setState({ desc7: e.target.value });
-    
+
     }
-    onTextAreaCharge8(e){
+    onTextAreaCharge8(e) {
         this.setState({ desc7: e.target.value });
-    
+
     }
     render() {
         return (
             <div className="Joho">
                 <header className="Joho-header">
                     <form onSubmit={this.onSubmit}>
-
-        <br/>
-        <br/>
-                      <header className="Login-header">
-                        <div>
- <p>右のバーに生徒番号を入力して検索することができます。ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
-<input type="text" value={this.state.desc7 }
-      onCharge={this.onTextAreaCharge7}/>
- <header className="upgraded-button">
-<div>
-<button type="submit">検索</button>
-                        </div>
-                        </header>
-</p>ㅤ
+                        <br/>
+                        <br/>
+                        <header className="Login-header">
+                            <div>
+                                <p>右のバーに生徒番号を入力して検索することができます。
+                                    <input type="text" value={this.state.desc7}
+                                        onCharge={this.onTextAreaCharge7} />
+                                    <header className="upgraded-button">
+                                        <div>
+                                            <button type="submit">検索</button>
+                                        </div>
+                                    </header>
+                                </p>ㅤ
                             <p>生徒番号<input type="text" value={this.state.desc}
-                                onChange={this.onTextAreaChange} />
-                                <input type="text" value={this.state.desc2}
-                                    onChange={this.onTextAreaChange2} />
-                            </p>
-<br/>
+                                    onChange={this.onTextAreaChange} />
+                                    <input type="text" value={this.state.desc2}
+                                        onChange={this.onTextAreaChange2} />
+                                </p>
+                                <br />
 
-                           <p>氏名<input type="text" value={this.state.desc3}
-                        onChange={this.onTextAreaChange3} /></p>
+                                <p>氏名<input type="text" value={this.state.desc3}
+                                    onChange={this.onTextAreaChange3} /></p>
 
                                  ㅤ <p>住所<input type="text" value={this.state.desc4}
                                     onChange={this.onTextAreaChange4} /></p>
-<br/>
-                            <p>電話番号<input type="text" value={this.state.desc5}
-                                onChange={this.onTextAreaChange5} /></p>
-<br/>
+                                <br />
+                                <p>電話番号<input type="text" value={this.state.desc5}
+                                    onChange={this.onTextAreaChange5} /></p>
+                                <br />
 
-                            <p>授業日数<input type="text" value={this.state.desc6}
-                                onChange={this.onTextAreaChange6} /></p>
-                                
-                        </div>
-                        <header className="upgraded-button">
-<div>
-<button type="submit">登録</button>
-                        </div>
-                        </header>
-                        <p>右のバーに生徒番号を入力して削除することができます。ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
-<input type="text" value={this.state.desc7 }
-      onCharge={this.onTextAreaCharge7}/>
- <header className="upgraded-button">
-<div>
-<button type="submit">削除</button>
-                        </div>
-                        </header>
-                        </p>
+                                <p>授業日数<input type="text" value={this.state.desc6}
+                                    onChange={this.onTextAreaChange6} /></p>
 
-                        <header className="upgraded-button">
-<div>
-<button type="submit">戻る</button>
-                        </div>
+                            </div>
+                            <header className="upgraded-button">
+                                <div>
+                                    <button type="submit">登録</button>
+                                </div>
+                            </header>
+                            <p>右のバーに生徒番号を入力して削除することができます。
+                                <input type="text" value={this.state.desc7}
+                                    onCharge={this.onTextAreaCharge7} />
+                                <header className="upgraded-button">
+                                    <div>
+                                        <button type="submit">削除</button>
+                                    </div>
+                                </header>
+                            </p>
+                            <header className="upgraded-button">
+                                <div>
+                                    <button type="submit">戻る</button>
+                                </div>
+                            </header>
                         </header>
-                        
-                        </header>
-
                     </form>
                 </header>
             </div>

@@ -57,19 +57,12 @@ class Login extends React.Component {
               <div>
                 <p>ユーザID　<input type="text" value={this.state.ID}
                   onChange={this.onTextAreaChange} /></p>
-
                 <p>パスワード<input type="text" value={this.state.Password}
                   onChange={this.onTextAreaChange2} /></p>
               </div>
-              <Button buttonname={'新規登録'} linkname={"/New registration"} className="Login_under_button"
-              />
-
-              <Button buttonname={'ログイン'} onClick={this.determine_ID} linkname={this.state.loginlink} className="Login_under_button"
-              />
-
-
+              <Button buttonname={'新規登録'} linkname={"/New registration"} className="Login_under_button" />
+              <Button buttonname={'ログイン'} onClick={this.determine_ID} linkname={this.state.loginlink} className="Login_under_button" />
             </div>
-
           </form>
         </header>
       </div>

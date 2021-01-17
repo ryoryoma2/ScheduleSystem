@@ -113,10 +113,8 @@ class NewR extends React.Component {
                             onChange={this.onTextAreaChange6} /></p>
                     </div>
 
-
                     <div>
-                        <Button buttonname={'登録'} linkname={"/"} className="under_button"
-                        />
+                        <Button buttonname={'登録'} linkname={"/"} className="under_button"/>
                     </div>
                 </header>
             </div>

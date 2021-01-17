@@ -64,7 +64,6 @@ class App extends React.Component {
                 <header className="Login-header">
                     <form onSubmit={this.onSubmit}>
                         <Router>
-
                             <Route path='/New registration' component={NewR} />
                             <Route path='/TopScreenTeacher' component={TopScreenTeacher} />
                             <Route path={'/TopScreenStudent'} component={TopScreenStudent} />
@@ -75,7 +74,6 @@ class App extends React.Component {
                             <Route path={'/ScheduleConfirmationS'} component={ScheduleConfirmationS} />
                             <Route path={'/ScheduleAdjustment'} component={ScheduleAdjustment} />
                         </Router>
-
                     </form>
                 </header>
             </div>

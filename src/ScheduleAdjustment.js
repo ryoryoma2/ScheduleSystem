@@ -20,13 +20,9 @@ class ScheduleAdjustment extends Component {
         return (
             <div className="ScheduleAdjustment">
                 <Calendar></Calendar>
-                <Button buttonname={'Topに戻る'} linkname={"/TopScreenTeacher"} className="under_button"
-                />
-
+                <Button buttonname={'Topに戻る'} linkname={"/TopScreenTeacher"} className="under_button"/>
                 {/* 講師と生徒の日程から授業日程を決定する */}
-                <Button buttonname={'調整'} linkname={"/TopScreenTeacher"} className="under_button"
-                />
-
+                <Button buttonname={'調整'} linkname={"/TopScreenTeacher"} className="under_button"/>
             </div>
         );
     }
