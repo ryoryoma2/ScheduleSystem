@@ -10,8 +10,8 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ID: '',
-      Password: '',
+      ID: 'ここに入力',
+      Password: 'ここに入力',
       loginlink: '/',
       rooms: []
     };
@@ -50,31 +50,21 @@ class Login extends React.Component {
       console.log("ID: " + this.state.ID);
       console.log("PassWord: " + this.state.Password);
     } else {
+      console.log("ログインできませんでした");
     }
   }
 
-  // componentDidMount() {
-  //   const url = "http://fe77eb74c5d3.ngrok.io";
-  //   axios.get(url).then((res) => {
-  //     console.log(res.data);
-  //     this.setState({ rooms: res.data });
-  //   });
-  // }
-
-  // //データベースからデータを受け取り表示する
-  // componentDidMount() {
-  //    axios.get('http://0c3914c8a05e.ngrok.io/', {
-  //      withCredentials: true,
-  //    });
-  //    axios.defaults.withCredentials = true; // global に設定してしまう場合
-
-  //   const url = " http://0c3914c8a05e.ngrok.io/";
-  //   axios.get(url).then((res) => {
-  //     res.setHeader("Access-Control-Allow-Origin", "*");
-  //     console.log(res.data);
-  //     this.setState({ rooms: res.data });
-  //   });
-  // }
+  componentWillMount() {
+    const URL = 'http://localhost:8080/api/sample/getBirthStone'
+    fetch(URL, { mode: 'cors' })
+      .then(res => res.json())
+      .then(json => {
+        this.setState({
+          month: json['ID'],
+          name: json['Password'],
+        })
+      });
+  }
 
 
 
@@ -86,13 +76,14 @@ class Login extends React.Component {
             <div>
 
               <p>ユーザID　<input type="text" value={this.state.ID}
-                onChange={this.onTextAreaChange}
-                placeholder= "ここに入力" /></p>
+                onChange={this.onTextAreaChange} /></p>
 
               <p>パスワード<input type="text" value={this.state.Password}
-                onChange={this.onTextAreaChange2}
-                placeholder= "ここに入力" /></p>
+                onChange={this.onTextAreaChange2} /></p>
             </div>
+
+            month: {this.state.month} <br />
+            name: {this.state.name} <br />
 
             <Button buttonname={'新規登録'} linkname={"/New registration"} className="Login_under_button"
             />
