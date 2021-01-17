@@ -73,17 +73,14 @@ class Homeworkedit extends Component {
                         <TableHeaderColumn dataField='kamoku'>科目</TableHeaderColumn>
                         <TableHeaderColumn
                             dataField='range'
-                            editable={{ validator: homeworkValidator }}>
-                            範囲
-                        </TableHeaderColumn>
+                            editable={{ validator: homeworkValidator }}
+                        >範囲</TableHeaderColumn>
                         <TableHeaderColumn
                             dataField='homweworkID'
                             width="10%"
                             isKey={true}
                             autoValue={ true }
-                            >
-                            宿題ID
-                        </TableHeaderColumn>
+                        >宿題ID</TableHeaderColumn>
                     </BootstrapTable>
                     <br></br>
                     <Button buttonname={'TOPに戻る'} linkname={"/TopScreenTeacher"} className="under_button" />

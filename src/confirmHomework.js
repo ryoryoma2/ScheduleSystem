@@ -65,24 +65,18 @@ class Homeworkedit extends Component {
                         <TableHeaderColumn
                             dataField='studentID'
                             filter={{ type: 'TextFilter', delay: 1000, placeholder: "生徒IDを検索" }}
-                        >
-                        生徒 ID
-                        </TableHeaderColumn>
+                        >生徒 ID</TableHeaderColumn>
                         <TableHeaderColumn dataField='kamoku'>科目</TableHeaderColumn>
                         <TableHeaderColumn
                             dataField='range'
                             editable={{ validator: homeworkValidator }}
-                        >
-                        範囲
-                        </TableHeaderColumn>
+                        >範囲</TableHeaderColumn>
                         <TableHeaderColumn dataField="image" dataFormat={imageFormatter}>提出物</TableHeaderColumn>
                         <TableHeaderColumn
                             dataField='homweworkID'
                             width="10%"
                             isKey={true}
-                        >
-                        宿題ID
-                        </TableHeaderColumn>
+                        >宿題ID</TableHeaderColumn>
                     </BootstrapTable>
                     <br></br>
                     <Button buttonname={'TOPに戻る'} linkname={"/TopScreenTeacher"} className="under_button" />
