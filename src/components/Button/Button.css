@@ -40,3 +40,11 @@ button.Login_under_button{
     justify-content: space-evenly;
     flex-wrap: nowrap;
 }
+
+.small_button{
+    padding: 5px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    align-items: flex-end;
+    border: 1px solid rgb(3, 62, 253);
+  }
