@@ -1,22 +1,21 @@
 import React from 'react';
 import './Joho.css';
 import Button from './components/Button/Button';
-
+import axios from 'axios';
 
 
 class Joho extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            desc: 'ここに入力',
-            desc2: 'ここに入力',
-            desc3: 'ここに入力',
-
-            desc4: 'ここに入力',
-            desc5: 'ここに入力',
-            desc6: 'ここに入力',
-            desc7: 'ここに入力',
-            desc8: 'ここに入力'
+            ID: 'ここに入力',
+            Name: 'ここに入力',
+            Address: 'ここに入力',
+            PhoneNumber: 'ここに入力',
+            classdays: 'ここに入力',
+            Register: 'ここに入力',
+            Search: 'ここに入力',
+            Delete: 'ここに入力'
 
         };
         this.onChange = this.onChange.bind(this);
@@ -43,47 +42,63 @@ class Joho extends React.Component {
     }
 
     onTextAreaChange(e) {
-        this.setState({ desc: e.target.value });
+        this.setState({ ID: e.target.value });
     }
 
     onTextAreaChange2(e) {
-        this.setState({ desc2: e.target.value });
+        this.setState({ Name: e.target.value });
     }
 
     onTextAreaChange3(e) {
-        this.setState({ desc3: e.target.value });
+        this.setState({ Address: e.target.value });
     }
 
     onTextAreaChange4(e) {
-        this.setState({ desc4: e.target.value });
+        this.setState({ PhoneNumber: e.target.value });
     }
 
     onTextAreaChange5(e) {
-        this.setState({ desc5: e.target.value });
+        this.setState({ Days: e.target.value });
     }
 
     onTextAreaChange6(e) {
-        this.setState({ desc6: e.target.value });
+        this.setState({ Register: e.target.value });
     }
     onTextAreaCharge7(e) {
-        this.setState({ desc7: e.target.value });
+        this.setState({ Search: e.target.value });
 
     }
     onTextAreaCharge8(e) {
-        this.setState({ desc7: e.target.value });
+        this.setState({ Delete: e.target.value });
 
     }
+
+    componentDidMount() {
+        const url = "http://40ac26238e00.ngrok.io/?q=1";
+        axios.get(url).then((res) => {
+            console.log(res.data.data[0]);
+            this.setState({
+                id: res.data.data[0].iD,
+                name: res.data.data[0].name,
+                address: res.data.data[0].address,
+                phonenumber: res.data.data[0].phonenumber,
+                classdays: res.data.data[0].classdays
+            });
+        });
+    }
+
     render() {
         return (
             <div className="Joho">
                 <header className="Joho-header">
                     <form onSubmit={this.onSubmit}>
+
                         <br />
                         <br />
                         <header className="Login-header">
                             <div>
                                 <p>右のバーに生徒番号を入力して検索することができます。ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
-                                    <input type="text" value={this.state.desc7}
+                                <input type="text" value={this.state.desc7}
                                         onCharge={this.onTextAreaCharge7} />
                                     <header className="upgraded-button">
                                         <div>
@@ -91,25 +106,23 @@ class Joho extends React.Component {
                                         </div>
                                     </header>
                                 </p>ㅤ
-                            <p>生徒番号<input type="text" value={this.state.desc}
+                            <p>生徒ID　<input type="text" value={this.state.id}
                                     onChange={this.onTextAreaChange} />
-                                    <input type="text" value={this.state.desc2}
-                                        onChange={this.onTextAreaChange2} />
                                 </p>
                                 <br />
 
-                                <p>氏名<input type="text" value={this.state.desc3}
-                                    onChange={this.onTextAreaChange3} /></p>
+                                <p>氏名　　　<input type="text" value={this.state.name}
+                                    onChange={this.onTextAreaChange2} /></p>
 
-                                 ㅤ <p>住所<input type="text" value={this.state.desc4}
+                                 ㅤ <p>住所　　　<input type="text" value={this.state.address}
+                                    onChange={this.onTextAreaChange3} /></p>
+                                <br />
+                                <p>電話番号　<input type="text" value={this.state.phonenumber}
                                     onChange={this.onTextAreaChange4} /></p>
                                 <br />
-                                <p>電話番号<input type="text" value={this.state.desc5}
-                                    onChange={this.onTextAreaChange5} /></p>
-                                <br />
 
-                                <p>授業日数<input type="text" value={this.state.desc6}
-                                    onChange={this.onTextAreaChange6} /></p>
+                                <p>授業日数　<input type="text" value={this.state.classdays}
+                                    onChange={this.onTextAreaChange5} /></p>
 
                             </div>
                             <header className="upgraded-button">
@@ -118,8 +131,9 @@ class Joho extends React.Component {
                                 </div>
                             </header>
                             <p>右のバーに生徒番号を入力して削除することができます。ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
-                                <input type="text" value={this.state.desc7}
-                                    onCharge={this.onTextAreaCharge7} />
+
+                            <input type="text" value={this.state.desc8}
+                                    onCharge={this.onTextAreaCharge8} />
                                 <header className="upgraded-button">
                                     <div>
                                         <button type="submit">削除</button>
