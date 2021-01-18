@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Button from './components/Button/Button';
-import Calendar from './components/Calendar/Calendar';
+import Calendar from './components/Calendar/TeacherCalendar';
 
 
 // ファイルの実質上の中身

@@ -8,10 +8,6 @@ class Schedule_Calendar extends React.Component {
             date: new Date(),
             //月のデータ
             month_days: {
-                20211206: { is_holiday: true },
-                20211213: { is_holiday: true },
-                20211220: { is_holiday: true },
-                20211227: { is_holiday: true },
             }
         };
         this.getTileClass = this.getTileClass.bind(this);
@@ -22,7 +18,7 @@ class Schedule_Calendar extends React.Component {
     //チェック状態を確認したい
     handleItemChange(e){
         return e.target.checked;
-      }
+    }
 
     // state の日付と同じ表記に変換
     getFormatDate(date) {
