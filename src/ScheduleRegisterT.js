@@ -20,19 +20,12 @@ class ScheduleRegisterT extends Component {
         return (
             <div className="ScheduleRegisterT">
                 <Calendar></Calendar>
-                <Button buttonname={'Topに戻る'} linkname={"/TopScreenTeacher"} className="under_button"
-                />
-
                 {/* データベースに日程を登録 */}
-                <Button buttonname={'日程登録'} linkname={"/TopScreenTeacher"} className="under_button"
-                />
-
-                <Button buttonname={'日程調整'} linkname={"/ScheduleAdjustment"} className="under_button"
-                />
-
-                <Button buttonname={'日程確認'} linkname={"/ScheduleConfirmationT"} className="under_button"
-                />
-
+                <Button buttonname={'日程登録'} linkname={"/TopScreenTeacher"} className="under_button"/>
+                <Button buttonname={'日程調整'} linkname={"/ScheduleAdjustment"} className="under_button"/>
+                <Button buttonname={'日程確認'} linkname={"/ScheduleConfirmationT"} className="under_button"/>
+                
+                <Button buttonname={'Topに戻る'} linkname={"/TopScreenTeacher"} className="under_button"/>
             </div>
         );
     }
