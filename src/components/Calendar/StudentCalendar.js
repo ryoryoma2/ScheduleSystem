@@ -1,6 +1,14 @@
 import React from 'react';
 import Calendar from 'react-calendar';
 
+import { useSelector } from "react-redux";
+
+const sutudentAttendance = [
+    {
+
+    }
+];
+
 class Schedule_Calendar extends React.Component {
     constructor(props) {
         super(props);
@@ -12,11 +20,13 @@ class Schedule_Calendar extends React.Component {
         };
         this.getTileClass = this.getTileClass.bind(this);
         this.getTileContent = this.getTileContent.bind(this);
-        this.handleItemChange = this.handleItemChange.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
+    // useSelector(state => state.studentAttendance.date);
+
     //チェック状態を確認したい
-    handleItemChange(e){
+    handleChange(e){
         return e.target.checked;
     }
 
@@ -37,7 +47,7 @@ class Schedule_Calendar extends React.Component {
     }
 
     //日付の内容を出力
-    getTileContent({ date, view ,value, checked, onChange}) {
+    getTileContent({ date, view }) {
         // 月表示のときのみ
         if (view !== 'month') {
             return null;
@@ -51,9 +61,9 @@ class Schedule_Calendar extends React.Component {
                     <div>
                         <input
                             type="checkbox"
-                            checked={checked}
-                            value={value}
-                            onChange={this.handleItemChange}
+                            value={day}
+                            onChange={this.handleChange}
+                            //checked={}
                         />
                     </div>
                 }

@@ -15,11 +15,6 @@ class Schedule_Calendar extends React.Component {
         this.handleItemChange = this.handleItemChange.bind(this);
     }
 
-    //チェック状態を確認したい
-    handleItemChange(e){
-        return e.target.checked;
-    }
-
     // state の日付と同じ表記に変換
     getFormatDate(date) {
         return `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(-2)}${('0' + date.getDate()).slice(-2)}`;
@@ -37,7 +32,7 @@ class Schedule_Calendar extends React.Component {
     }
 
     //日付の内容を出力
-    getTileContent({ date, view ,value, checked, onChange}) {
+    getTileContent({ date, view }) {
         // 月表示のときのみ
         if (view !== 'month') {
             return null;
@@ -46,14 +41,15 @@ class Schedule_Calendar extends React.Component {
         return (
             <p>
                 <br />
-                {(this.state.month_days[day] && this.state.month_days[day].text) ?
+                {(this.state.month_days[day] &&
+                    this.state.month_days[day].text) ?
                     this.state.month_days[day].text :
                     <div>
                         <input
                             type="checkbox"
-                            checked={checked}
-                            value={value}
+                            value={day}
                             onChange={this.handleItemChange}
+                            //checked={val.includes(day)}
                         />
                     </div>
                 }
