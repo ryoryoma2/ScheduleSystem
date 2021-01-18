@@ -5,7 +5,7 @@ class Schedule_Calendar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            date: new Date(2021, 7, 1),
+            date: new Date(),
             //月のデータ
             month_days: {
                 20211206: { is_holiday: true },
@@ -16,7 +16,13 @@ class Schedule_Calendar extends React.Component {
         };
         this.getTileClass = this.getTileClass.bind(this);
         this.getTileContent = this.getTileContent.bind(this);
+        this.handleItemChange = this.handleItemChange.bind(this);
     }
+
+    //チェック状態を確認したい
+    handleItemChange(e){
+        return e.target.checked;
+      }
 
     // state の日付と同じ表記に変換
     getFormatDate(date) {
@@ -49,10 +55,9 @@ class Schedule_Calendar extends React.Component {
                     <div>
                         <input
                             type="checkbox"
-                            style={{ margin: "0" }}
                             checked={checked}
                             value={value}
-                            onChange={onChange}
+                            onChange={this.handleItemChange}
                         />
                     </div>
                 }
