@@ -43,7 +43,7 @@ class Login extends React.Component {
   }
 
   determine_ID(e) {//idから生徒か講師か判別する
-    const url = "http://67106ed73932.ngrok.io/?id=1"
+    const url = "http://cc605666aa26.ngrok.io/?id=1"
     var tempArray = url.split("?");
     var baseURL = tempArray[0];
     var additionalURL = tempArray[1];
