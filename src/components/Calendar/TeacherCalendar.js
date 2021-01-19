@@ -12,7 +12,7 @@ class Schedule_Calendar extends React.Component {
         };
         this.getTileClass = this.getTileClass.bind(this);
         this.getTileContent = this.getTileContent.bind(this);
-        this.handleItemChange = this.handleItemChange.bind(this);
+        // this.handleItemChange = this.handleItemChange.bind(this);
     }
 
     // state の日付と同じ表記に変換

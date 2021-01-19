@@ -32,11 +32,11 @@ class Schedule_Calendar extends React.Component {
     handleChange(e) {
         if (this.state.studentAttendance.includes(e.target.value)) {
             // チェックが外れたので要素を消す
-            this.state.studentAttendance.splice(e.target.value, 1);
+            //this.state.studentAttendance.splice(e.target.value, 1);
         } else {
             //　チェックがついたので日付をセットし,is_attendanceをtrueにする
-            this.setState({ ...this.state.studentAttendance, date: e.target.value });
-            this.setState({ ...this.state.studentAttendance.date[e.target.value], is_attendance: true });
+            //this.setState({ ...this.state.studentAttendance, date: e.target.value });
+            //this.setState({ ...this.state.studentAttendance.date[e.target.value], is_attendance: true });
         }
     }
 
@@ -74,7 +74,7 @@ class Schedule_Calendar extends React.Component {
                         type="checkbox"
                         value={day}
                         onChange={this.handleChange}
-                        checked={this.state.studentAttendance.attendance.includes(day)}
+                        //checked={this.state.studentAttendance.attendance.includes(day)}
                     />
                 </div>
             </p>
@@ -93,15 +93,15 @@ class Schedule_Calendar extends React.Component {
     }
 }
 
-//export default Schedule_Calendar;
+export default Schedule_Calendar;
 
-function mapStateToProps(state) {
-    return state;
-}
+// function mapStateToProps(state) {
+//     return state;
+// }
 
-function mapDispatchToProps() {
-    const dispatch = useDispatch();
-    return { dispatch1: () => { dispatch(()); } };
-}
+// function mapDispatchToProps() {
+//     const dispatch = useDispatch();
+//     return { dispatch1: () => { dispatch(()); } };
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Schedule_Calendar)
+// export default connect(mapStateToProps, mapDispatchToProps)(Schedule_Calendar)
