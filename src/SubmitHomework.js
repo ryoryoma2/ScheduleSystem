@@ -1,10 +1,9 @@
 // インポート
 import React, { Component } from 'react';
-import './SubmitHomework.css';
-import Button from './components/Button/Button';
+import './App.css';
 
 // ファイルの実質上の中身
-class SubmitHomework extends Component {
+class submitHomework extends Component {
 
     // イベントハンドラー
     onClickHandler = () => {
@@ -14,9 +13,9 @@ class SubmitHomework extends Component {
 
     render() {
         return (
-            <div className="SubmitHomework">
-                <header className="SubmitHomework-header">
-                    <table border="1" width="80%" cellSpacing="0" cellPadding="5" bordercolor="#333333">
+            <div className="submitHomework">
+                <header className="App-header">
+                    <table border="1" width="80%" cellspacing="0" cellpadding="5" bordercolor="#333333">
                         <tr>
                             <th bgcolor="#FFFFFF"><font color="#000000">科目</font></th>
                             <th bgcolor="#FFFFFF"><font color="#000000">範囲</font></th>
@@ -40,7 +39,9 @@ class SubmitHomework extends Component {
                         </tr>
                     </table>
                     <br></br>
-                    <Button buttonname={'TOPに戻る'} linkname={"/TopScreenTeacher"} className="under_button" />
+                    <button type="button" name="returnTop" value="aaa" width="40%" style={{width: '40%', padding: '10px'}}>
+                        Topにもどる
+                    </button>
                 </header>
             </div>
         );
@@ -48,4 +49,4 @@ class SubmitHomework extends Component {
 }
 
 // エクスポート
-export default SubmitHomework;
+export default submitHomework;

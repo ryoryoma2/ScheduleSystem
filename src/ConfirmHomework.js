@@ -1,8 +1,7 @@
 // インポート
 import React, { Component } from 'react';
-import './confirmHomework.css';
-import homeworkSample from './image/homeworkSample.png';
-import Button from './components/Button/Button';
+import './App.css';
+import homeworkSample from './images/homeworkSample.jpeg';
 
 const style = {
     width: '100%',
@@ -11,7 +10,7 @@ const style = {
 };
 
 // ファイルの実質上の中身
-class ConfirmHomework extends Component {
+class confirmHomework extends Component {
 
     // イベントハンドラー
     onClickHandler = () => {
@@ -21,7 +20,7 @@ class ConfirmHomework extends Component {
 
     render() {
         return (
-            <div className="ConfirmHomework">
+            <div className="confirmHomework">
                 <header className="App-header">
                     <p>
                         <input type="search" name="studentIDSearch" placeholder="生徒IDを入力"></input>
@@ -47,7 +46,9 @@ class ConfirmHomework extends Component {
                         </tr>
                     </table>
                     <br></br>
-                    <Button buttonname={'TOPに戻る'} linkname={"/TopScreenTeacher"} className="under_button" />
+                    <button type="button" name="returnTop" value="aaa" width="40%" style={{ width: '40%', padding: '10px' }}>
+                        Topにもどる
+                    </button>
                 </header>
             </div>
         );
@@ -55,4 +56,4 @@ class ConfirmHomework extends Component {
 }
 
 // エクスポート
-export default ConfirmHomework;
+export default confirmHomework;
