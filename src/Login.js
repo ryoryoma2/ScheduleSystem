@@ -6,14 +6,15 @@ import axios from 'axios';
 
 
 class Login extends React.Component {
-  //const consolelog = () => console.log(this.state.loginlink);
   constructor(props) {
     super(props);
     this.state = {
       ID: '',
       Password: '',
       loginlink: '/',
-      rooms: []
+      rooms: [],
+      iD: '',
+      passwd: ''
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -41,31 +42,47 @@ class Login extends React.Component {
   }
 
   determine_ID(e) {//idから生徒か講師か判別する
-    if (this.state.ID.match("^t")) {
-      this.setState({ loginlink: '/TopScreenTeacher' })
-      console.log("ID: " + this.state.ID);
-      console.log("PassWord: " + this.state.Password);
-    } else if (this.state.ID.match("^s")) {
+    const url = "http://cc605666aa26.ngrok.io/?id=1"
+    var tempArray = url.split("?");
+    var baseURL = tempArray[0];
+    var additionalURL = tempArray[1];
+    var newURL = "";
+    additionalURL = this.state.ID;
+    newURL = baseURL + "?id=" + additionalURL;
+    axios.get(newURL).then((res) => {
+      console.log(res.data.data);
+      this.setState({
+        id: res.data.data[0].iD,
+        name: res.data.data[0].name,
+        passwd: res.data.data[0].passwd,
+        isStudent: res.data.data[0].isStudent
+      });
+    });
+    if (this.state.ID == this.state.id && this.state.isStudent == true && this.state.Password == this.state.passwd) {
       this.setState({ loginlink: '/TopScreenStudent' })
-      console.log("ID: " + this.state.ID);
-      console.log("PassWord: " + this.state.Password);
+    } else if (this.state.ID == this.state.id && this.state.isStudent == false && this.state.Password == this.state.passwd) {
+      this.setState({ loginlink: '/TopScreenTeacher' })
     } else {
-      console.log("ログインできませんでした");
+      alert("ログインできませんでした\nIDかパスワードを間違えていないか確認してください");
     }
   }
 
-  componentWillMount() {
-    const URL = 'http://localhost:8080/api/sample/getBirthStone'
-    fetch(URL, { mode: 'cors' })
-      .then(res => res.json())
-      .then(json => {
-        this.setState({
-          month: json['ID'],
-          name: json['Password'],
-        })
-      });
+  componentDidUpdate() {
   }
 
+
+  // componentDidMount() {
+  //   const url = "http://ded4d6dd715c.ngrok.io/?id=1";
+  //   axios.get(url).then((res) => {
+  //     console.log(res.data.data);
+  //     this.setState({
+  //       id: res.data.data[0].iD,
+  //       name: res.data.data[0].name,
+  //       passwd: res.data.data[0].passwd,
+  //       isStudent: res.data.data[0].isStudent
+  //     });
+  //   });
+  // }
 
 
   render() {
@@ -76,16 +93,11 @@ class Login extends React.Component {
             <div>
 
               <p>ユーザID　<input type="text" value={this.state.ID}
-                onChange={this.onTextAreaChange}
-                placeholder="ここに入力"/></p>
+                onChange={this.onTextAreaChange} placeholder="ここに入力" /></p>
 
               <p>パスワード<input type="text" value={this.state.Password}
-                onChange={this.onTextAreaChange2}
-                placeholder="ここに入力"/></p>
+                onChange={this.onTextAreaChange2} placeholder="ここに入力" /></p>
             </div>
-
-            month: {this.state.month} <br />
-            name: {this.state.name} <br />
 
             <Button buttonname={'新規登録'} linkname={"/New registration"} className="Login_under_button"
             />

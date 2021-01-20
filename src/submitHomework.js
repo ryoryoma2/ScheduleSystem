@@ -10,14 +10,14 @@ const homework = [
     {
         homweworkID: 0,
         studentID: '00',
-        kamoku: '数学',
+        subject: '数学',
         range: 'p,11-15',
         image: homeworkSample
     },
     {
         homweworkID: 1,
         studentID: '00',
-        kamoku: '英語',
+        subject: '英語',
         range: 'p,11-15',
         image: homeworkSample
     }
@@ -41,7 +41,7 @@ class Homeworkedit extends Component {
                         data={homework}
                         tableStyle={{ backgroundColor: '#FFFFFF' }}
                     >
-                        <TableHeaderColumn dataField='kamoku' width="20%">科目</TableHeaderColumn>
+                        <TableHeaderColumn dataField='subject' width="20%">科目</TableHeaderColumn>
                         <TableHeaderColumn dataField='range' width="20%">範囲</TableHeaderColumn>
                         <TableHeaderColumn dataField="image" dataFormat={imageSubmit} width="50%">提出物</TableHeaderColumn>
                         <TableHeaderColumn
@@ -52,7 +52,7 @@ class Homeworkedit extends Component {
                         </TableHeaderColumn>
                     </BootstrapTable>
                     <br></br>
-                    <Button buttonname={'TOPに戻る'} linkname={"/TopScreenTeacher"} className="under_button" />
+                    <Button buttonname={'TOPに戻る'} linkname={"/TopScreenStudent"} className="under_button" />
                 </header>
             </div>
         );

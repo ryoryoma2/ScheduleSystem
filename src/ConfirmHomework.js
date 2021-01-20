@@ -10,27 +10,27 @@ const homework = [
     {
         homweworkID: 0,
         studentID: '00',
-        kamoku: '数学',
+        subject: '数学',
         range: 'p,11-15',
         image: homeworkSample
     },
     {
         homweworkID: 1,
         studentID: '00',
-        kamoku: '英語',
+        subject: '英語',
         range: 'p,11-15',
         image: homeworkSample
     },
     {
         homweworkID: 2,
         studentID: '01',
-        kamoku: '数学',
+        subject: '数学',
         range: 'p,11-15'
     },
     {
         homweworkID: 3,
         studentID: '01',
-        kamoku: '英語',
+        subject: '英語',
         range: 'p,11-15'
     }
 ];
@@ -66,7 +66,7 @@ class Homeworkedit extends Component {
                             dataField='studentID'
                             filter={{ type: 'TextFilter', delay: 1000, placeholder: "生徒IDを検索" }}
                         >生徒 ID</TableHeaderColumn>
-                        <TableHeaderColumn dataField='kamoku'>科目</TableHeaderColumn>
+                        <TableHeaderColumn dataField='subject'>科目</TableHeaderColumn>
                         <TableHeaderColumn
                             dataField='range'
                             editable={{ validator: homeworkValidator }}
