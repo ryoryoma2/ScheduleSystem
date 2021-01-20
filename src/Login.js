@@ -10,8 +10,8 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ID: 'ここに入力',
-      Password: 'ここに入力',
+      ID: '',
+      Password: '',
       loginlink: '/',
       rooms: [],
       iD: '',
@@ -43,7 +43,7 @@ class Login extends React.Component {
   }
 
   determine_ID(e) {//idから生徒か講師か判別する
-    const url = "http://c16cb0380a92.ngrok.io/?id=1";
+    const url = "http://cc605666aa26.ngrok.io/?id=1"
     var tempArray = url.split("?");
     var baseURL = tempArray[0];
     var additionalURL = tempArray[1];
@@ -94,10 +94,10 @@ class Login extends React.Component {
             <div>
 
               <p>ユーザID　<input type="text" value={this.state.ID}
-                onChange={this.onTextAreaChange} /></p>
+                onChange={this.onTextAreaChange} placeholder="ここに入力" /></p>
 
               <p>パスワード<input type="text" value={this.state.Password}
-                onChange={this.onTextAreaChange2} /></p>
+                onChange={this.onTextAreaChange2} placeholder="ここに入力" /></p>
             </div>
 
             <Button buttonname={'新規登録'} linkname={"/New registration"} className="Login_under_button"

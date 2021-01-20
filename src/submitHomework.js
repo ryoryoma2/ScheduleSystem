@@ -52,7 +52,7 @@ class Homeworkedit extends Component {
                         </TableHeaderColumn>
                     </BootstrapTable>
                     <br></br>
-                    <Button buttonname={'TOPに戻る'} linkname={"/TopScreenTeacher"} className="under_button" />
+                    <Button buttonname={'TOPに戻る'} linkname={"/TopScreenStudent"} className="under_button" />
                 </header>
             </div>
         );

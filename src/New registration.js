@@ -6,12 +6,12 @@ class NewR extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            desc: 'ここに入力',
-            desc2: 'ここに入力',
-            desc3: 'ここに入力',
-            desc4: 'ここに入力',
-            desc5: 'ここに入力',
-            desc6: 'ここに入力',
+            desc: '',
+            desc2: '',
+            desc3: '',
+            desc4: '',
+            desc5: '',
+            desc6: '',
             //チェックボックス
             check1: true,
             check2: false,
@@ -85,32 +85,36 @@ class NewR extends React.Component {
                             <input type="radio"
                                 name="radio1"
                                 value="生徒"
-                                checked={this.state.radio1 === "生徒"} onChange={this.onRadioChange} /> 生徒　<br />
+                                checked={this.state.radio1 === "生徒"}
+                                onChange={this.onRadioChange}
+                                placeholder="ここに入力"/> 生徒　<br />
 
                             <input type="radio"
                                 name="radio1"
                                 value="講師"
-                                checked={this.state.radio1 === "講師"} onChange={this.onRadioChange} /> 講師　<br />
+                                checked={this.state.radio1 === "講師"}
+                                onChange={this.onRadioChange}
+                                placeholder="ここに入力"/> 講師　<br />
                         </div>
 
 
                         <p>氏名　　　<input type="text" value={this.state.desc}
-                            onChange={this.onTextAreaChange} />
+                            onChange={this.onTextAreaChange} placeholder="ここに入力"/>
                             <input type="text" value={this.state.desc2}
-                                onChange={this.onTextAreaChange2} />
+                                onChange={this.onTextAreaChange2} placeholder="ここに入力"/>
                         </p>
 
                         <p>ユーザID　<input type="text" value={this.state.desc3}
-                            onChange={this.onTextAreaChange3} /></p>
+                            onChange={this.onTextAreaChange3} placeholder="ここに入力"/></p>
 
                         <p>パスワード<input type="text" value={this.state.desc4}
-                            onChange={this.onTextAreaChange4} /></p>
+                            onChange={this.onTextAreaChange4} placeholder="ここに入力"/></p>
 
                         <p>電話番号　<input type="text" value={this.state.desc5}
-                            onChange={this.onTextAreaChange5} /></p>
+                            onChange={this.onTextAreaChange5} placeholder="ここに入力"/></p>
 
                         <p>住所　　　<input type="text" value={this.state.desc6}
-                            onChange={this.onTextAreaChange6} /></p>
+                            onChange={this.onTextAreaChange6} placeholder="ここに入力"/></p>
                     </div>
 
                     <div>

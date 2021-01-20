@@ -79,7 +79,7 @@ class Homeworkedit extends Component {
                             dataField='homweworkID'
                             width="10%"
                             isKey={true}
-                            autoValue={ true }
+                            //autoValue={ true }
                         >宿題ID</TableHeaderColumn>
                     </BootstrapTable>
                     <br></br>
