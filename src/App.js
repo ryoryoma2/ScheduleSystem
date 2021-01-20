@@ -12,7 +12,7 @@ import ScheduleConfirmationS from './ScheduleConfirmationS';
 import ScheduleAdjustment from './ScheduleAdjustment';
 import HomeworkEdit from './HomeworkEdit';
 import Joho from './Joho';
-import SubmitHomework from './SubmitHomework';
+import SubmitHomework from './submitHomework';
 import ConfirmHomework from './ConfirmHomework';
 
 class App extends React.Component {
