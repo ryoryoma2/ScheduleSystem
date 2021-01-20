@@ -1,4 +1,4 @@
-/*import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = [
     {
@@ -31,4 +31,3 @@ export default slice.reducer;
 
 // Action Creatorsをエクスポートする
 export const { setName, clearName } = slice.actions;
-*/
