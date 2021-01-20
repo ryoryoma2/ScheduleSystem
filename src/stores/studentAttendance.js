@@ -31,20 +31,4 @@ export default slice.reducer;
 
 // Action Creatorsをエクスポートする
 export const { setName, clearName } = slice.actions;
-<<<<<<< HEAD
-=======
-
-// Async task
-export function fetchAsync(date) {
-    return async function (dispatch) {
-        dispatch(slice.actions.fetchStart());
-        try {
-            const response = date;
-            dispatch(slice.actions.fetchSucceed(response));
-        } catch (err) {
-            dispatch(slice.actions.fetchFaild(err));
-        }
-    };
-}
->>>>>>> 382ab443fb85f76b1712c09b0c10e1f654146810
 */

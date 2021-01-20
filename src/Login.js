@@ -6,7 +6,6 @@ import axios from 'axios';
 
 
 class Login extends React.Component {
-  //const consolelog = () => console.log(this.state.loginlink);
   constructor(props) {
     super(props);
     this.state = {

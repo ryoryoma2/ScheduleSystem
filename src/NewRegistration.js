@@ -1,6 +1,7 @@
 import React from 'react';
 import './Login.css';
 import Button from './components/Button/Button';
+import axios from 'axios';
 
 class NewR extends React.Component {
     constructor(props) {
@@ -71,6 +72,25 @@ class NewR extends React.Component {
         console.log("Password " + this.state.Password);
         console.log("PhoneNumber " + this.state.PhoneNumber);
         console.log("Address " + this.state.Address);
+    }
+
+    determine_ID(e) {//idから生徒か講師か判別する
+        const url = "http://cc605666aa26.ngrok.io/?id=1"
+        var tempArray = url.split("?");
+        var baseURL = tempArray[0];
+        var additionalURL = tempArray[1];
+        var newURL = "";
+        additionalURL = this.state.ID;
+        newURL = baseURL + "?id=" + additionalURL;
+        axios.get(newURL).then((res) => {
+          console.log(res.data.data);
+          this.setState({
+            id: res.data.data[0].iD,
+            name: res.data.data[0].name,
+            passwd: res.data.data[0].passwd,
+            isStudent: res.data.data[0].isStudent
+          });
+        });
     }
 
     render() {
