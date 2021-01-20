@@ -53,6 +53,10 @@ function imageFormatter(cell) {
 }
 
 class Homeworkedit extends Component {
+    search_ID(){
+        console.log;
+        {homework[0].studentID};
+    }
     render() {
         return (
             <div className="Homeworkedit">
