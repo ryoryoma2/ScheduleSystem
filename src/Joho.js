@@ -1,6 +1,7 @@
 import React from 'react';
-import './Joho.css';
+import './App.css';
 import Button from './components/Button/Button';
+import axios from 'axios';
 
 
 
@@ -8,16 +9,13 @@ class Joho extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            desc: 'ここに入力',
-            desc2: 'ここに入力',
-            desc3: 'ここに入力',
-
-            desc4: 'ここに入力',
-            desc5: 'ここに入力',
-            desc6: 'ここに入力',
-            desc7: 'ここに入力',
-            desc8: 'ここに入力'
-
+            id: '',
+            name: '',
+            address: '',
+            phonenumber: '',
+            classdays: '',
+            searchID: '',
+            deleteID: ''
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -27,117 +25,105 @@ class Joho extends React.Component {
         this.onTextAreaChange4 = this.onTextAreaChange4.bind(this);
         this.onTextAreaChange5 = this.onTextAreaChange5.bind(this);
         this.onTextAreaChange6 = this.onTextAreaChange6.bind(this);
-        this.onTextAreaCharge7 = this.onTextAreaCharge7.bind(this);
-        this.onTextAreaCharge8 = this.onTextAreaCharge8.bind(this);
+        this.onTextAreaChange7 = this.onTextAreaChange7.bind(this);
+        this.search_ID = this.search_ID.bind(this);
     }
 
     onChange(e) {
         console.log(e.target.value);
         this.setState({ usstate: e.target.value });
-    }
+    } s
 
     onSubmit(e) {
         e.preventDefault();
-        console.log("onSubmit");
-        console.log(this.state);
+        // console.log("onSubmit");
+        console.log(e.target.state);
     }
 
     onTextAreaChange(e) {
-        this.setState({ desc: e.target.value });
+        this.setState({ id: e.target.value });
     }
 
     onTextAreaChange2(e) {
-        this.setState({ desc2: e.target.value });
+        this.setState({ name: e.target.value });
     }
 
     onTextAreaChange3(e) {
-        this.setState({ desc3: e.target.value });
+        this.setState({ address: e.target.value });
     }
 
     onTextAreaChange4(e) {
-        this.setState({ desc4: e.target.value });
+        this.setState({ phonenumber: e.target.value });
     }
 
     onTextAreaChange5(e) {
-        this.setState({ desc5: e.target.value });
+        this.setState({ classdays: e.target.value });
     }
 
     onTextAreaChange6(e) {
-        this.setState({ desc6: e.target.value });
+        this.setState({ searchID: e.target.value });
     }
-    onTextAreaCharge7(e) {
-        this.setState({ desc7: e.target.value });
-
+    onTextAreaChange7(e) {
+        this.setState({ deleteID: e.target.value });
     }
-    onTextAreaCharge8(e) {
-        this.setState({ desc7: e.target.value });
 
+    search_ID(e) {//idから生徒か講師か判別する
+        const url = "http://cc605666aa26.ngrok.io/?id=1";
+        var tempArray = url.split("?");
+        var baseURL = tempArray[0];
+        var additionalURL = tempArray[1];
+        var newURL = "";
+        additionalURL = this.state.searchID;
+        console.log(this.state.searchID);
+        newURL = baseURL + "?id=" + additionalURL;
+        axios.get(newURL).then((res) => {
+            console.log(res.data.data);
+            this.setState({
+                id: res.data.data[0].iD,
+                name: res.data.data[0].name,
+                address: res.data.data[0].address,
+                phonenumber: res.data.data[0].phonenumber,
+                isStudent: res.data.data[0].isStudent,
+                classdays: res.data.data[0].classdays
+            });
+        });
     }
     render() {
         return (
             <div className="Joho">
                 <header className="Joho-header">
-                    <form onSubmit={this.onSubmit}>
+                    <header className="Login-header">
 
-                        <br />
-                        <br />
-                        <header className="Login-header">
-                            <div>
-                                <p>右のバーに生徒番号を入力して検索することができます。ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
-<input type="text" value={this.state.desc7}
-                                        onCharge={this.onTextAreaCharge7} />
-                                    <header className="upgraded-button">
-                                        <div>
-                                            <button type="submit">検索</button>
-                                        </div>
-                                    </header>
-                                </p>ㅤ
-                            <p>生徒番号<input type="text" value={this.state.desc}
-                                    onChange={this.onTextAreaChange} />
-                                    <input type="text" value={this.state.desc2}
-                                        onChange={this.onTextAreaChange2} />
-                                </p>
-                                <br />
-
-                                <p>氏名<input type="text" value={this.state.desc3}
-                                    onChange={this.onTextAreaChange3} /></p>
-
-                                 ㅤ <p>住所<input type="text" value={this.state.desc4}
-                                    onChange={this.onTextAreaChange4} /></p>
-                                <br />
-                                <p>電話番号<input type="text" value={this.state.desc5}
-                                    onChange={this.onTextAreaChange5} /></p>
-                                <br />
-
-                                <p>授業日数<input type="text" value={this.state.desc6}
-                                    onChange={this.onTextAreaChange6} /></p>
-
-                            </div>
-                            <header className="upgraded-button">
-                                <div>
-                                    <button type="submit">登録</button>
-                                </div>
-                            </header>
-                            <p>右のバーに生徒番号を入力して削除することができます。ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
-<input type="text" value={this.state.desc7}
-                                    onCharge={this.onTextAreaCharge7} />
-                                <header className="upgraded-button">
-                                    <div>
-                                        <button type="submit">削除</button>
-                                    </div>
-                                </header>
+                        <div className="flex">
+                            <p>右のバーにIDを入力して検索 <input type="text" value={this.state.searchID} onChange={this.onTextAreaChange6} placeholder="ここに入力"/>
+                                <Button buttonname={'検索'} onClick={this.search_ID}  className="small_button"
+                                />
                             </p>
-
-                            <header>
-                                <div>
-                                    <Button buttonname={'戻る'} linkname={"/TopScreenTeacher"} className="under_button"
-                                    />
-                                </div>
-                            </header>
-
-                        </header>
-
-                    </form>
+                        </div>
+                        <div>
+                            <p>生徒ID　 <input type="text" value={this.state.id}
+                                onChange={this.onTextAreaChange} placeholder="ここに入力"/></p>
+                            <p>氏名　　　<input type="text" value={this.state.name}
+                                onChange={this.onTextAreaChange2} placeholder="ここに入力"/></p>
+                             ㅤ <p>住所　　　<input type="text" value={this.state.address}
+                                onChange={this.onTextAreaChange3} placeholder="ここに入力"/></p>
+                            <p>電話番号　<input type="text" value={this.state.phonenumber}
+                                onChange={this.onTextAreaChange4} placeholder="ここに入力"/></p>
+                            <p>授業日数　<input type="text" value={this.state.classdays}
+                                onChange={this.onTextAreaChange5} placeholder="ここに入力"/></p>
+                        </div>
+                        <Button buttonname={'登録'} className="small_button" />
+                        <div className="flex">
+                            <p>右のバーにIDを入力して削除 <input type="text" value={this.state.deleteID} onChange={this.onTextAreaChange7} placeholder="ここに入力"/>
+                                <Button buttonname={'削除'} onClick={this.search_ID} className="small_button"
+                                />
+                            </p>
+                        </div>
+                        <div>
+                            <Button buttonname={'戻る'} linkname={"/TopScreenTeacher"} className="small_button"
+                            />
+                        </div>
+                    </header>
                 </header>
             </div>
         );

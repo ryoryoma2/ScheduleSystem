@@ -12,8 +12,8 @@ import ScheduleConfirmationS from './ScheduleConfirmationS';
 import ScheduleAdjustment from './ScheduleAdjustment';
 import HomeworkEdit from './HomeworkEdit';
 import Joho from './Joho';
-import SubmitHomework from './SubmitHomework';
-import ConfirmHomework from './ConfirmHomework';
+import submitHomework from './submitHomework';
+import confirmHomework from './ConfirmHomework';
 
 class App extends React.Component {
     constructor(props) {
@@ -78,8 +78,8 @@ class App extends React.Component {
                         <Route path={'/ScheduleAdjustment'} component={ScheduleAdjustment} />
                         <Route path={'/HomeworkEdit'} component={HomeworkEdit} />
                         <Route path={'/Joho'} component={Joho} />
-                        <Route path={'/SubmitHomework'} component={SubmitHomework} />
-                        <Route path={'/ConfirmHomework'} component={ConfirmHomework} />
+                        <Route path={'/submitHomework'} component={submitHomework} />
+                        <Route path={'/confirmHomework'} component={confirmHomework} />
                     </Router>
 
                 </header>

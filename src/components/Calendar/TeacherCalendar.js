@@ -5,19 +5,14 @@ class Schedule_Calendar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            date: new Date(2020, 12, 1),
+            date: new Date(),
             //月のデータ
             month_days: {
-                20201206: { is_holiday: true },
-                20201213: { is_holiday: true },
-                20201220: { is_holiday: true },
-                20201227: { is_holiday: true },
-                20201214: { text: <input type="checkbox" /> },
-                20201225: { text: 'バシャログ出稿' }
             }
         };
         this.getTileClass = this.getTileClass.bind(this);
         this.getTileContent = this.getTileContent.bind(this);
+        // this.handleItemChange = this.handleItemChange.bind(this);
     }
 
     // state の日付と同じ表記に変換
@@ -46,8 +41,17 @@ class Schedule_Calendar extends React.Component {
         return (
             <p>
                 <br />
-                {(this.state.month_days[day] && this.state.month_days[day].text) ?
-                    this.state.month_days[day].text : ' '
+                {(this.state.month_days[day] &&
+                    this.state.month_days[day].text) ?
+                    this.state.month_days[day].text :
+                    <div>
+                        <input
+                            type="checkbox"
+                            value={day}
+                            onChange={this.handleItemChange}
+                            //checked={val.includes(day)}
+                        />
+                    </div>
                 }
             </p>
         );

@@ -39,7 +39,7 @@ class submitHomework extends Component {
                         </tr>
                     </table>
                     <br></br>
-                    <button type="button" name="returnTop" value="aaa" width="40%" style={{width: '40%', padding: '10px'}}>
+                    <button type="button" name="returnTop" value="aaa" width="40%" style={{ width: '40%', padding: '10px' }}>
                         Topにもどる
                     </button>
                 </header>
