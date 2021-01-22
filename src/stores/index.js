@@ -1,4 +1,4 @@
-/*import { combineReducers } from "redux";
+import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 
 // それぞれ slice.reducer を default export している前提
@@ -12,4 +12,4 @@ const reducer = combineReducers({
 
 const store = configureStore({ reducer });
 
-export default store;*/
+export default store;
