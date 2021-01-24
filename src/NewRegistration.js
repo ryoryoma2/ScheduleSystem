@@ -25,7 +25,7 @@ class NewR extends React.Component {
         this.onTextAreaChange6 = this.onTextAreaChange6.bind(this);
 
         this.onRadioChange = this.onRadioChange.bind(this);//radio
-        this.log = this.log.bind(this);
+        this.senddata = this.senddata.bind(this);
     }
 
     onChange(e) {
@@ -65,32 +65,29 @@ class NewR extends React.Component {
         })
     }
 
-    log(e) {
-        console.log(this.state.radio1);
-        console.log("Name: " + this.state.Name);
-        console.log("ID: " + this.state.ID);
-        console.log("Password " + this.state.Password);
-        console.log("PhoneNumber " + this.state.PhoneNumber);
-        console.log("Address " + this.state.Address);
-    }
 
-    determine_ID(e) {//idから生徒か講師か判別する
-        const url = "http://cc605666aa26.ngrok.io/?id=1"
-        var tempArray = url.split("?");
-        var baseURL = tempArray[0];
-        var additionalURL = tempArray[1];
-        var newURL = "";
-        additionalURL = this.state.ID;
-        newURL = baseURL + "?id=" + additionalURL;
-        axios.get(newURL).then((res) => {
-          console.log(res.data.data);
-          this.setState({
-            id: res.data.data[0].iD,
-            name: res.data.data[0].name,
-            passwd: res.data.data[0].passwd,
-            isStudent: res.data.data[0].isStudent
-          });
-        });
+    senddata() {
+
+        var body = {
+            isStudent: this.state.radio1,
+            name: this.state.Name,
+            userID: this.state.ID,
+            Passwd: this.state.Password,
+            phonenumber: this.state.PhoneNumber,
+            address: this.state.Address
+        }
+
+        axios({
+            method: 'post',
+            url: ' http://7d56e713ab3d.ngrok.io/post',
+            data: body
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     render() {
@@ -103,39 +100,41 @@ class NewR extends React.Component {
 
                                 <input type="radio"
                                     name="radio1"
-                                    value="生徒"
-                                    checked={this.state.radio1 === "生徒"}
+                                    value="true"
+                                    checked={this.state.radio1 == "true"}
                                     onChange={this.onRadioChange}
-                                    placeholder="ここに入力"/> 生徒　<br />
+                                    placeholder="ここに入力" /> 生徒　<br />
 
                                 <input type="radio"
                                     name="radio1"
-                                    value="講師"
-                                    checked={this.state.radio1 === "講師"}
+                                    value="false"
+                                    checked={this.state.radio1 == "false"}
                                     onChange={this.onRadioChange}
-                                    placeholder="ここに入力"/> 講師　<br />
+                                    placeholder="ここに入力" /> 講師　<br />
                             </div>
 
 
-                            <p>氏名　　　<input type="text" value={this.state.Name}
-                                onChange={this.onTextAreaChange} placeholder="ここに入力"/>
+                            <p>氏名　　<input type="text" value={this.state.Name}
+                                onChange={this.onTextAreaChange} placeholder="ここに入力" />
                             </p>
 
-                            <p>ユーザID　<input type="text" value={this.state.ID}
-                                onChange={this.onTextAreaChange3} placeholder="ここに入力"/></p>
+                            <p>ユーザID  <input type="text" value={this.state.ID}
+                                onChange={this.onTextAreaChange3} placeholder="ここに入力" /></p>
 
-                            <p>パスワード<input type="text" value={this.state.Password}
-                                onChange={this.onTextAreaChange4} placeholder="ここに入力"/></p>
+                            <p>パスワード <input type="text" value={this.state.Password}
+                                onChange={this.onTextAreaChange4} placeholder="ここに入力" /></p>
 
-                            <p>電話番号　<input type="text" value={this.state.PhoneNumber}
-                                onChange={this.onTextAreaChange5} placeholder="ここに入力"/></p>
+                            <p>電話番号<input type="text" value={this.state.PhoneNumber}
+                                onChange={this.onTextAreaChange5} placeholder="ここに入力" /></p>
 
-                            <p>住所　　　<input type="text" value={this.state.Address}
-                                onChange={this.onTextAreaChange6} placeholder="ここに入力"/></p>
+                            <p>住所　　<input type="text" value={this.state.Address}
+                                onChange={this.onTextAreaChange6} placeholder="ここに入力" /></p>
                         </div>
 
                         <div>
-                            <Button buttonname={'登録'} onClick={this.log} linkname={"/"} className="under_button"/>
+                            <Button buttonname={'登録'} onClick={this.senddata} className="under_button" />
+                        </div>
+                        <div>
                             <Button buttonname={'TOPに戻る'} linkname={"/"} className="under_button" />
                         </div>
                     </form>
