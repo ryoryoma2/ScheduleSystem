@@ -69,12 +69,16 @@ class NewR extends React.Component {
     senddata() {
 
         var body = {
-            isStudent: this.state.radio1,
-            name: this.state.Name,
-            userID: this.state.ID,
-            Passwd: this.state.Password,
-            phonenumber: this.state.PhoneNumber,
-            address: this.state.Address
+            data: [
+                {
+                    "isStudent": this.state.radio1,
+                    "name": this.state.Name,
+                    "userID": this.state.ID,
+                    "Passwd": this.state.Password,
+                    "phonenumber": this.state.PhoneNumber,
+                    "address": this.state.Address
+                }
+            ]
         }
 
         axios({
@@ -83,7 +87,7 @@ class NewR extends React.Component {
             data: body
         })
             .then(function (response) {
-                console.log(response);
+                console.log(response.data);
             })
             .catch(function (error) {
                 console.log(error);
