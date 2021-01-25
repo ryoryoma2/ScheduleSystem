@@ -1,4 +1,4 @@
-// インポート
+
 import React, { Component } from 'react';
 import './App.css';
 import Button from './components/Button/Button';
@@ -48,7 +48,7 @@ function homeworkValidator(value) {
 }
 
 function imageFormatter(cell) {
-    if (cell) {return (<img style={{ width: 50 }} src={cell} />)}
+    if (cell) { return (<img style={{ width: 50 }} src={cell} />) }
     else return '未提出'
 }
 

@@ -1,58 +1,47 @@
 // インポート
 import React, { Component } from 'react';
 import './App.css';
-import Button from './components/Button/Button';
 
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import homeworkSample from './images/homeworkSample.jpeg';
+// ファイルの実質上の中身
+class submitHomework extends Component {
 
-const homework = [
-    {
-        homweworkID: 0,
-        studentID: '00',
-        subject: '数学',
-        range: 'p,11-15',
-        image: homeworkSample
-    },
-    {
-        homweworkID: 1,
-        studentID: '00',
-        subject: '英語',
-        range: 'p,11-15',
-        image: homeworkSample
+    // イベントハンドラー
+    onClickHandler = () => {
+        let nextVersion = parseInt(this.state.version, 10) + 1
+        this.setState({ version: nextVersion.toFixed(1) })
     }
-];
 
-function imageSubmit() {
-    return (
-        <p>
-            <input type="file" name="datafile" />
-            <input type="submit" value="送信する" />
-        </p>)
-}
-
-class Homeworkedit extends Component {
     render() {
         return (
-            <div className="Homeworkedit">
+            <div className="submitHomework">
                 <header className="App-header">
-                    <BootstrapTable
-                        version='4'
-                        data={homework}
-                        tableStyle={{ backgroundColor: '#FFFFFF' }}
-                    >
-                        <TableHeaderColumn dataField='subject' width="20%">科目</TableHeaderColumn>
-                        <TableHeaderColumn dataField='range' width="20%">範囲</TableHeaderColumn>
-                        <TableHeaderColumn dataField="image" dataFormat={imageSubmit} width="50%">提出物</TableHeaderColumn>
-                        <TableHeaderColumn
-                            dataField='homweworkID'
-                            width="10%"
-                            isKey={true}>
-                            宿題ID
-                        </TableHeaderColumn>
-                    </BootstrapTable>
+                    <table border="1" width="80%" cellspacing="0" cellpadding="5" bordercolor="#333333">
+                        <tr>
+                            <th bgcolor="#FFFFFF"><font color="#000000">科目</font></th>
+                            <th bgcolor="#FFFFFF"><font color="#000000">範囲</font></th>
+                            <th bgcolor="#FFFFFF"><font color="#000000">提出</font></th>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#FFFFFF" align="center" nowrap width="0%"><font color="#000000">英語</font></td>
+                            <td bgcolor="#FFFFFF" align="center" nowrap width="0%"><font color="#000000">p.11-15</font></td>
+                            <td bgcolor="#FFFFFF" align="center" nowrap width="0%">
+                                <input type="file" name="syukudaigazou"></input>
+                                <input type="submit" value="送信"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#FFFFFF" align="center" nowrap><font color="#000000">数学</font></td>
+                            <td bgcolor="#FFFFFF" align="center" nowrap width="0%"><font color="#000000">p.11-15</font></td>
+                            <td bgcolor="#FFFFFF" align="center" nowrap width="0%">
+                                <input type="file" name="syukudaigazou" color="#000000"></input>
+                                <input type="submit" value="送信"></input>
+                            </td>
+                        </tr>
+                    </table>
                     <br></br>
-                    <Button buttonname={'TOPに戻る'} linkname={"/TopScreenStudent"} className="under_button" />
+                    <button type="button" name="returnTop" value="aaa" width="40%" style={{ width: '40%', padding: '10px' }}>
+                        Topにもどる
+                    </button>
                 </header>
             </div>
         );
@@ -60,4 +49,4 @@ class Homeworkedit extends Component {
 }
 
 // エクスポート
-export default Homeworkedit;
+export default submitHomework;
