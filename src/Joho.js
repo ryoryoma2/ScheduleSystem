@@ -68,7 +68,7 @@ class Joho extends React.Component {
     }
 
     search_ID(e) {//idから生徒か講師か判別する
-        const url = "http://cc605666aa26.ngrok.io/?id=1";
+        const url = "http://4b03574bb538.ngrok.io/?id=1";
         var tempArray = url.split("?");
         var baseURL = tempArray[0];
         var additionalURL = tempArray[1];
@@ -95,26 +95,26 @@ class Joho extends React.Component {
                     <header className="Login-header">
 
                         <div className="flex">
-                            <p>右のバーにIDを入力して検索 <input type="text" value={this.state.searchID} onChange={this.onTextAreaChange6} placeholder="ここに入力"/>
-                                <Button buttonname={'検索'} onClick={this.search_ID}  className="small_button"
+                            <p>右のバーにIDを入力して検索 <input type="text" value={this.state.searchID} onChange={this.onTextAreaChange6} placeholder="ここに入力" />
+                                <Button buttonname={'検索'} onClick={this.search_ID} className="small_button"
                                 />
                             </p>
                         </div>
                         <div>
                             <p>生徒ID　 <input type="text" value={this.state.id}
-                                onChange={this.onTextAreaChange} placeholder="ここに入力"/></p>
+                                onChange={this.onTextAreaChange} placeholder="ここに入力" /></p>
                             <p>氏名　　　<input type="text" value={this.state.name}
-                                onChange={this.onTextAreaChange2} placeholder="ここに入力"/></p>
+                                onChange={this.onTextAreaChange2} placeholder="ここに入力" /></p>
                              ㅤ <p>住所　　　<input type="text" value={this.state.address}
-                                onChange={this.onTextAreaChange3} placeholder="ここに入力"/></p>
+                                onChange={this.onTextAreaChange3} placeholder="ここに入力" /></p>
                             <p>電話番号　<input type="text" value={this.state.phonenumber}
-                                onChange={this.onTextAreaChange4} placeholder="ここに入力"/></p>
+                                onChange={this.onTextAreaChange4} placeholder="ここに入力" /></p>
                             <p>授業日数　<input type="text" value={this.state.classdays}
-                                onChange={this.onTextAreaChange5} placeholder="ここに入力"/></p>
+                                onChange={this.onTextAreaChange5} placeholder="ここに入力" /></p>
                         </div>
                         <Button buttonname={'登録'} className="small_button" />
                         <div className="flex">
-                            <p>右のバーにIDを入力して削除 <input type="text" value={this.state.deleteID} onChange={this.onTextAreaChange7} placeholder="ここに入力"/>
+                            <p>右のバーにIDを入力して削除 <input type="text" value={this.state.deleteID} onChange={this.onTextAreaChange7} placeholder="ここに入力" />
                                 <Button buttonname={'削除'} onClick={this.search_ID} className="small_button"
                                 />
                             </p>

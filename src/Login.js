@@ -3,8 +3,6 @@ import './Login.css';
 import Button from './components/Button/Button';
 import axios from 'axios';
 
-
-
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -42,7 +40,7 @@ class Login extends React.Component {
   }
 
   determine_ID(e) {//idから生徒か講師か判別する
-    const url = "http://cc605666aa26.ngrok.io/?id=1"
+    const url = "http://4b03574bb538.ngrok.io/?id=1"
     var tempArray = url.split("?");
     var baseURL = tempArray[0];
     var additionalURL = tempArray[1];
@@ -63,6 +61,7 @@ class Login extends React.Component {
     } else if (this.state.ID == this.state.id && this.state.isStudent == false && this.state.Password == this.state.passwd) {
       this.setState({ loginlink: '/TopScreenTeacher' })
     } else {
+
       alert("ログインできませんでした\nIDかパスワードを間違えていないか確認してください");
     }
   }

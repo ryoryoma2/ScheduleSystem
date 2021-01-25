@@ -49,7 +49,7 @@ class Schedule_Calendar extends React.Component {
                             type="checkbox"
                             value={day}
                             onChange={this.handleItemChange}
-                            //checked={val.includes(day)}
+                        //checked={val.includes(day)}
                         />
                     </div>
                 }
