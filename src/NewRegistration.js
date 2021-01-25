@@ -69,24 +69,30 @@ class NewR extends React.Component {
     senddata() {
 
         var body = {
-            isStudent: this.state.radio1,
-            name: this.state.Name,
-            userID: this.state.ID,
-            Passwd: this.state.Password,
-            phonenumber: this.state.PhoneNumber,
-            address: this.state.Address
+            data: [
+                {
+                    "isStudent": this.state.radio1,
+                    "name": this.state.Name,
+                    "userID": this.state.ID,
+                    "passwd": this.state.Password,
+                    "phonenumber": this.state.PhoneNumber,
+                    "address": this.state.Address
+                }
+            ]
         }
 
         axios({
             method: 'post',
-            url: ' http://7d56e713ab3d.ngrok.io/post',
+            url: ' http://4b03574bb538.ngrok.io/create',
             data: body
         })
             .then(function (response) {
-                console.log(response);
+                console.log(response.data);
+                alert('登録が完了しました');
             })
             .catch(function (error) {
                 console.log(error);
+                alert('入力内容を確認してください')
             });
     }
 
