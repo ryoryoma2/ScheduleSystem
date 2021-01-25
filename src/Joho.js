@@ -86,20 +86,22 @@ class Joho extends React.Component {
                 address: res.data.data[0].address,
                 phonenumber: res.data.data[0].phonenumber,
                 isStudent: res.data.data[0].isStudent,
-                classdays: res.data.data[0].classdays
+                classdays: res.data.data[0].classdays,
+                deleteID: ""
             });
         });
         axios.get(newURL).catch((error) => {
             console.log(error);
-            alert('生徒が見つかりませんでした');
             this.setState({
                 id: "",
                 name: "",
                 address: "",
                 phonenumber: "",
                 isStudent: "",
-                classdays: ""
+                classdays: "",
+                deleteID: ""
             });
+            alert('生徒が見つかりませんでした');
         });
     }
 
@@ -145,19 +147,34 @@ class Joho extends React.Component {
             axios.get(newURL).then((res) => {
                 console.log(res.data.data);
                 alert('ID:' + this.state.deleteID + 'を削除しました')
-                /*
+                
                 this.setState({
-                    id: res.data.data[0].iD,
-                    name: res.data.data[0].name,
-                    address: res.data.data[0].address,
-                    phonenumber: res.data.data[0].phonenumber,
-                    isStudent: res.data.data[0].isStudent,
-                    classdays: res.data.data[0].classdays
-                });*/
+                    id: "",
+                    name: "",
+                    address: "",
+                    phonenumber: "",
+                    isStudent: "",
+                    classdays: "",
+                    searchID: ""
+                });
+            });
+            axios.get(newURL).catch((error) => {
+                console.log(error);
+                this.setState({
+                    id: "",
+                    name: "",
+                    address: "",
+                    phonenumber: "",
+                    isStudent: "",
+                    classdays: "",
+                    deleteID: ""
+                });
+                alert('生徒が見つかりませんでした');
             });
         }
         else {
             alert('削除をキャンセルしました');
+            this.setState({deleteID:""})
         }
 
     }

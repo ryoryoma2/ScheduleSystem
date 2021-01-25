@@ -67,7 +67,6 @@ class NewR extends React.Component {
 
 
     senddata() {
-
         var body = {
             data: [
                 {

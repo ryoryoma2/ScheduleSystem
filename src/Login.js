@@ -47,6 +47,7 @@ class Login extends React.Component {
     var baseURL = tempArray[0];
     var additionalURL = tempArray[1];
     var newURL = "";
+    var count = 0;
     additionalURL = this.state.ID;
     newURL = baseURL + "?id=" + additionalURL;
     axios.get(newURL).then((res) => {
@@ -63,26 +64,13 @@ class Login extends React.Component {
     } else if (this.state.ID == this.state.id && this.state.isStudent == false && this.state.Password == this.state.passwd) {
       this.setState({ loginlink: '/TopScreenTeacher' })
     } else {
+      count ++;
+      if(count >= 2){
       alert("ログインできませんでした\nIDかパスワードを間違えていないか確認してください");
+      }
+
     }
   }
-
-  componentDidUpdate() {
-  }
-
-
-  // componentDidMount() {
-  //   const url = "http://ded4d6dd715c.ngrok.io/?id=1";
-  //   axios.get(url).then((res) => {
-  //     console.log(res.data.data);
-  //     this.setState({
-  //       id: res.data.data[0].iD,
-  //       name: res.data.data[0].name,
-  //       passwd: res.data.data[0].passwd,
-  //       isStudent: res.data.data[0].isStudent
-  //     });
-  //   });
-  // }
 
 
   render() {
