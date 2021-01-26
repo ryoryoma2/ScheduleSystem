@@ -126,7 +126,7 @@ class NewR extends React.Component {
                             <p>ユーザID  <input type="text" value={this.state.ID}
                                 onChange={this.onTextAreaChange3} placeholder="ここに入力" /></p>
 
-                            <p>パスワード <input type="text" value={this.state.Password}
+                            <p>パスワード <input type="password" value={this.state.Password}
                                 onChange={this.onTextAreaChange4} placeholder="ここに入力" /></p>
 
                             <p>電話番号<input type="text" value={this.state.PhoneNumber}
