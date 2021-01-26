@@ -70,7 +70,7 @@ class Joho extends React.Component {
     }
 
     search_ID(e) {//idから生徒か講師か判別する
-        const url = "http://4b03574bb538.ngrok.io/?id=1";
+        const url = "http://69ab7befd210.ngrok.io/?id=1";
         var tempArray = url.split("?");
         var baseURL = tempArray[0];
         var additionalURL = tempArray[1];
@@ -120,7 +120,7 @@ class Joho extends React.Component {
 
         axios({
             method: 'post',
-            url: ' http://4b03574bb538.ngrok.io/update',
+            url: ' http://69ab7befd210.ngrok.io/update',
             data: body
         })
             .then(function (response) {
@@ -136,7 +136,7 @@ class Joho extends React.Component {
     delete_ID(e) {//idから生徒か講師か判別する
         var result = window.confirm("本当に削除してもよろしいですか？")
         if (result) {
-            const url = "http://4b03574bb538.ngrok.io/delete?id=1";
+            const url = "http://69ab7befd210.ngrok.io/delete?id=1";
             var tempArray = url.split("?");
             var baseURL = tempArray[0];
             var additionalURL = tempArray[1];

@@ -8,27 +8,27 @@ import homeworkSample from './images/homeworkSample.jpeg';
 
 const homework = [
     {
-        homweworkID: 0,
+        homeworkID: 0,
         studentID: '00',
         subject: '数学',
         range: 'p,11-15',
         image: homeworkSample
     },
     {
-        homweworkID: 1,
+        homeworkID: 1,
         studentID: '00',
         subject: '英語',
         range: 'p,11-15',
         image: homeworkSample
     },
     {
-        homweworkID: 2,
+        homeworkID: 2,
         studentID: '01',
         subject: '数学',
         range: 'p,11-15'
     },
     {
-        homweworkID: 3,
+        homeworkID: 3,
         studentID: '01',
         subject: '英語',
         range: 'p,11-15'
@@ -73,7 +73,7 @@ class Homeworkedit extends Component {
                         >範囲</TableHeaderColumn>
                         <TableHeaderColumn dataField="image" dataFormat={imageFormatter}>提出物</TableHeaderColumn>
                         <TableHeaderColumn
-                            dataField='homweworkID'
+                            dataField='homeworkID'
                             width="10%"
                             isKey={true}
                         >宿題ID</TableHeaderColumn>

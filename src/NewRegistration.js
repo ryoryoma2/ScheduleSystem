@@ -82,7 +82,7 @@ class NewR extends React.Component {
 
         axios({
             method: 'post',
-            url: ' http://4b03574bb538.ngrok.io/create',
+            url: ' http://69ab7befd210.ngrok.io/create',
             data: body
         })
             .then(function (response) {
