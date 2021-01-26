@@ -46,24 +46,22 @@ def userInfo():
 
     if request.args.get('id') is not None:
         query = request.args.get('id')
-        cur = conn.cursor()
+        with conn.cursor() as cur:
+        #cur = conn.cursor()
         # cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ")
-        cur.execute('SELECT * FROM public."User" Where "userID"={0}'.format(query))
-        results = cur.fetchall()
-
+             cur.execute('SELECT * FROM public."User" Where "userID"={0}'.format(query))
+             results = cur.fetchall()
         name = results[0][1]
         iD = results[0][0]
         data = [
             {"iD": iD,
-            "name": name,
-            "passwd": results[0][2],
-            "address": results[0][3],
-            "phonenumber":results[0][4],
-             "isStudent":results[0][5],
-            "classdays":results[0][6]}
+              "name": name,
+              "passwd": results[0][2],
+              "address": results[0][3],
+              "phonenumber":results[0][4],
+              "isStudent":results[0][5],
+              "classdays":results[0][6]}
         ]
-
-        cur.close()
         return jsonify({
             'status': 'OK',
             'data': data
@@ -82,32 +80,30 @@ def getUserandPasswd():
 
     if request.args.get('id') is not None and request.args.get('passwd')is not None:
         queryID = request.args.get('id')
-        cur = conn.cursor()
+        with conn.cursor() as cur:
+        #cur = conn.cursor()
         # cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ")
-        cur.execute('SELECT "userID","passwd" FROM public."User" Where "userID"={0} '.format(queryID))
-        results = cur.fetchall()
+            cur.execute('SELECT "userID","passwd" FROM public."User" Where "userID"={0} '.format(queryID))
+            results = cur.fetchall()
 
-        id = results[0][0]
-        password = results[0][1]
+            id = results[0][0]
+            password = results[0][1]
         #print(request.args.get('passwd'))
         #print(queryID)
-        if password == request.args.get('passwd'):
-         data = [
-            {"id": id},
-            {"password": password}
-         ]
-
-         cur.close()
-         return jsonify({
-            'status': 'OK',
-            'data': data
-         })
-        else:
-            cur.close()
-            return jsonify({
-                'status': 'NO',
-                'data': ""
-            })
+            if password == request.args.get('passwd'):
+              data = [
+                {"id": id},
+                {"password": password}
+              ]
+              return jsonify({
+                 'status': 'OK',
+                 'data': data
+              })
+            else:
+              return jsonify({
+                 'status': 'NO',
+                 'data': ""
+              })
     else:
         return jsonify({
             'status': 'None id',
@@ -133,23 +129,22 @@ def create():
         queryaddress = json['data'][0]['address']
         queryphonenumber = json['data'][0]['phonenumber']
         queryisStudent = json['data'][0]['isStudent']
-        cur = conn.cursor()
-
+        with conn.cursor() as cur:
+        #cur = conn.cursor()
         #INSERT_SQL = """INSERT INTO public."User" ("userID", name, passwd, address, "phonenumber", "isStudent") VALUES """
         # cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ")
-        try:
-            cur.execute('INSERT INTO public."User" ("userID", name, passwd, address, "phonenumber", "isStudent") VALUES' + str((queryID,queryname,querypass,queryaddress,queryphonenumber,queryisStudent)))
-            print((queryID,queryname,querypass,queryaddress,queryphonenumber,queryisStudent))
-            print(str(queryID)+",\'"+queryname+"\',\'"+querypass+"\',\'"+queryaddress+"\',"+str(queryphonenumber)+","+str(queryisStudent))
-        except Exception as e:
-            conn.rollback()
-        else:
-            conn.commit()
+           try:
+               cur.execute('INSERT INTO public."User" ("userID", name, passwd, address, "phonenumber", "isStudent") VALUES' + str((queryID,queryname,querypass,queryaddress,queryphonenumber,queryisStudent)))
+               print((queryID,queryname,querypass,queryaddress,queryphonenumber,queryisStudent))
+               print(str(queryID)+",\'"+queryname+"\',\'"+querypass+"\',\'"+queryaddress+"\',"+str(queryphonenumber)+","+str(queryisStudent))
+           except Exception as e:
+               conn.rollback()
+           else:
+               conn.commit()
 
-        results = cur.description
-        print(results)
-        result = 'Insert:ID' + str(queryID)
-        cur.close()
+           results = cur.description
+           print(results)
+           result = 'Insert:ID' + str(queryID)
         conn.commit()
         return jsonify({
             'status': 'OK',
@@ -168,14 +163,11 @@ def deleteUser():
 
     if request.args.get('id') is not None:
         queryID = request.args.get('id')
-        cur = conn.cursor()
-        print(queryID)
+        #cur = conn.cursor()
+        with conn.cursor() as cur:
         # cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ")
-        cur.execute('DELETE FROM public."User" WHERE "userID"={0} '.format(queryID))
-        print('DELETE FROM public."User" WHERE "userID"={0} '.format(queryID))
-        results = cur.description
-        print(results)
-        cur.close()
+            cur.execute('DELETE FROM public."User" WHERE "userID"={0} '.format(queryID))
+            results = cur.description
         conn.commit()
         return jsonify({
            'status': 'DELETED!',
@@ -206,19 +198,18 @@ def userUpdate():
         queryaddress = json['data'][0]['address']
         queryphonenumber = json['data'][0]['phonenumber']
         queryclassdays = json['data'][0]['classdays']
-        cur = conn.cursor()
-        print(queryID)
+        with conn.cursor() as cur:
+        #cur = conn.cursor()
         # cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ")
-        cur.execute('UPDATE public."User" SET name = \''+ queryname + '\',address = \''
+            cur.execute('UPDATE public."User" SET name = \''+ queryname + '\',address = \''
                     +queryaddress +'\',phonenumber = '+ str(queryphonenumber)+',classdays = ' + str(queryclassdays) + ' WHERE "userID"=' + str(queryID))
-        print('UPDATE public."User" SET name = \''+ queryname + '\',address = \''
+            print('UPDATE public."User" SET name = \''+ queryname + '\',address = \''
                     +queryaddress +'\',phonenumber = '+ str(queryphonenumber)+',classdays = ' + str(queryclassdays) + ' WHERE "userID"=' + str(queryID))
-        results = cur.description
+            results = cur.description
         # output result
         # print(type(results[0]))
         # print(request.args.get('passwd'))
         # print(queryID)
-        cur.close()
         conn.commit()
         return jsonify({
            'status': 'UPDATEED!',
