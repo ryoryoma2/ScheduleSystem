@@ -39,11 +39,7 @@ class Login extends React.Component {
     this.setState({ Password: e.target.value });
   }
 
-<<<<<<< HEAD
   onBlur() {
-=======
-  onBlur(){
->>>>>>> c562e244f36585a6974e70180360e03d5ad78c69
     const url = "http://69ab7befd210.ngrok.io/?id=1"
     var tempArray = url.split("?");
     var baseURL = tempArray[0];
@@ -85,7 +81,6 @@ class Login extends React.Component {
         <header className="Login-header">
           <div>
             <div>
-
               <p>ユーザID　<input type="text" value={this.state.ID}
                 onChange={this.onTextAreaChange} onBlur={this.onBlur} placeholder="ここに入力" /></p>
 
