@@ -48,7 +48,6 @@ class Login extends React.Component {
     additionalURL = this.state.ID;
     newURL = baseURL + "?id=" + additionalURL;
     axios.get(newURL).then((res) => {
-      console.log(res.data.data);
       this.setState({
         id: res.data.data[0].iD,
         name: res.data.data[0].name,
@@ -57,18 +56,18 @@ class Login extends React.Component {
       });
     });
     if (this.state.ID == this.state.id && this.state.isStudent == true && this.state.Password == this.state.passwd) {
-      this.setState({ loginlink: '/TopScreenStudent' })
+      this.setState({ loginlink: '/TopScreenStudent' });
     } else if (this.state.ID == this.state.id && this.state.isStudent == false && this.state.Password == this.state.passwd) {
-      this.setState({ loginlink: '/TopScreenTeacher' })
+      this.setState({ loginlink: '/TopScreenTeacher' });
     } else {
     }
   }
 
   determine_ID(e) {//idから生徒か講師か判別する
     if (this.state.ID == this.state.id && this.state.isStudent == true && this.state.Password == this.state.passwd) {
-      this.setState({ loginlink: '/TopScreenStudent' })
+      this.setState({ loginlink: '/TopScreenStudent' });
     } else if (this.state.ID == this.state.id && this.state.isStudent == false && this.state.Password == this.state.passwd) {
-      this.setState({ loginlink: '/TopScreenTeacher' })
+      this.setState({ loginlink: '/TopScreenTeacher' });
     } else {
       alert("ログインできませんでした\nIDかパスワードを間違えていないか確認してください");
     }
