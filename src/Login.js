@@ -39,13 +39,8 @@ class Login extends React.Component {
     this.setState({ Password: e.target.value });
   }
 
-<<<<<<< HEAD
-  determine_ID(e) {//idから生徒か講師か判別する
-    const url = "http://69ab7befd210.ngrok.io//?id=1"
-=======
   onBlur(){
     const url = "http://69ab7befd210.ngrok.io/?id=1"
->>>>>>> fef4b4d23a0ca25cad9b45c45a01c46e355476ee
     var tempArray = url.split("?");
     var baseURL = tempArray[0];
     var additionalURL = tempArray[1];
