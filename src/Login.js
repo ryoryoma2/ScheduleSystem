@@ -39,7 +39,7 @@ class Login extends React.Component {
     this.setState({ Password: e.target.value });
   }
 
-  onBlur(){
+  onBlur() {
     const url = "http://69ab7befd210.ngrok.io/?id=1"
     var tempArray = url.split("?");
     var baseURL = tempArray[0];
@@ -61,7 +61,7 @@ class Login extends React.Component {
     } else if (this.state.ID === this.state.id && this.state.isStudent === false && this.state.Password === this.state.passwd) {
       this.setState({ loginlink: '/TopScreenTeacher' })
     } else {
-      }
+    }
   }
 
   determine_ID(e) {//idから生徒か講師か判別する
@@ -81,12 +81,11 @@ class Login extends React.Component {
         <header className="Login-header">
           <div>
             <div>
-
               <p>ユーザID　<input type="text" value={this.state.ID}
-                onChange={this.onTextAreaChange} onBlur= {this.onBlur} placeholder="ここに入力" /></p>
+                onChange={this.onTextAreaChange} onBlur={this.onBlur} placeholder="ここに入力" /></p>
 
               <p>パスワード<input type="password" value={this.state.Password}
-                onChange={this.onTextAreaChange2} onBlur = {this.onBlur} placeholder="ここに入力" /></p>
+                onChange={this.onTextAreaChange2} onBlur={this.onBlur} placeholder="ここに入力" /></p>
             </div>
 
             <Button buttonname={'新規登録'} linkname={"/NewRegistration"} className="Login_under_button"
