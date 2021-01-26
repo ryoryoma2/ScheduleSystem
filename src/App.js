@@ -54,7 +54,7 @@ class App extends React.Component {
                 <header className="Login-header">
                     <Router>
 
-                        <Route path={'/New registration'} component={NewR} />
+                        <Route path={'/NewRegistration'} component={NewR} />
                         <Route path={'/TopScreenTeacher'} component={TopScreenTeacher} />
                         <Route path={'/TopScreenStudent'} component={TopScreenStudent} />
                         <Route exact path={'/'} component={Login} />

@@ -89,7 +89,7 @@ class Login extends React.Component {
                 onChange={this.onTextAreaChange2} onBlur = {this.onBlur} placeholder="ここに入力" /></p>
             </div>
 
-            <Button buttonname={'新規登録'} linkname={"/New registration"} className="Login_under_button"
+            <Button buttonname={'新規登録'} linkname={"/NewRegistration"} className="Login_under_button"
             />
 
             <Button buttonname={'ログイン'} onClick={this.determine_ID} linkname={this.state.loginlink} className="Login_under_button"
