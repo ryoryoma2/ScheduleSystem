@@ -53,6 +53,18 @@ function imageFormatter(cell) {
 }
 
 class Homeworkedit extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            homeworkID: '',
+            studentID: '',
+            range: '',
+            subject: ''
+          };
+    }
+    onblur(){
+
+    }
     render() {
         return (
             <div className="Homeworkedit">

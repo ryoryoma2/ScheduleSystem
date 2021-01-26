@@ -40,7 +40,7 @@ class Login extends React.Component {
   }
 
   onBlur() {
-    const url = "http://69ab7befd210.ngrok.io/?id=1"
+    const url = "http://localhost:8000/?id=1"
     var tempArray = url.split("?");
     var baseURL = tempArray[0];
     var additionalURL = tempArray[1];

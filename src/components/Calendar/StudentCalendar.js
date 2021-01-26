@@ -34,11 +34,11 @@ class Schedule_Calendar extends React.Component {
     handleChange(e) {
         if (this.state.studentAttendance.includes(e.target.value)) {
             // チェックが外れたので要素を消す
-            //this.state.studentAttendance.splice(e.target.value, 1);
+            this.state.studentAttendance.splice(e.target.value, 1);
         } else {
-            //　チェックがついたので日付をセットし,is_attendanceをtrueにする
-            //this.setState({ ...this.state.studentAttendance, date: e.target.value });
-            //this.setState({ ...this.state.studentAttendance.date[e.target.value], is_attendance: true });
+            //チェックがついたので日付をセットし,is_attendanceをtrueにする
+            this.setState({ ...this.state.studentAttendance, date: e.target.value });
+            this.setState({ ...this.state.studentAttendance.date[e.target.value], is_attendance: true });
         }
     }
 
