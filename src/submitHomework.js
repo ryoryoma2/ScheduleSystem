@@ -1,6 +1,7 @@
 // インポート
 import React, { Component } from 'react';
 import './App.css';
+import Button from './components/Button/Button';
 
 // ファイルの実質上の中身
 class submitHomework extends Component {
@@ -39,9 +40,9 @@ class submitHomework extends Component {
                         </tr>
                     </table>
                     <br></br>
-                    <button type="button" name="returnTop" value="aaa" width="40%" style={{ width: '40%', padding: '10px' }}>
-                        Topにもどる
-                    </button>
+                    <div>
+                        <Button buttonname={'Topに戻る'} linkname={"/TopScreenStudent"} className="under_button" />
+                    </div>
                 </header>
             </div>
         );

@@ -3,8 +3,6 @@ import './Login.css';
 import Button from './components/Button/Button';
 import axios from 'axios';
 
-
-
 class Login extends React.Component {
   constructor(props) {
     super(props);
