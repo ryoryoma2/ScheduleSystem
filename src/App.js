@@ -28,7 +28,6 @@ class App extends React.Component {
         this.onSubmit = this.onSubmit.bind(this);
         this.onTextAreaChange = this.onTextAreaChange.bind(this);
         this.onTextAreaChange2 = this.onTextAreaChange2.bind(this);
-        this.determine_ID = this.determine_ID.bind(this);
     }
 
     onChange(e) {
@@ -47,19 +46,6 @@ class App extends React.Component {
 
     onTextAreaChange2(e) {
         this.setState({ Password: e.target.value });
-    }
-
-    determine_ID() {//idから生徒か講師か判別する
-        //this.setState({linkname: LoginProcessing } );
-        if (this.state.ID.match("^t")) {
-            this.setState({ loginlink: '/TopScreenTeacher' })
-            // this.setState({component: TopScreenTeacher  })
-        } else if (this.state.ID.match("^s")) {
-            this.setState({ loginlink: '/TopScreenStudent' })
-            // this.setState({component: TopScreenStudent })
-        } else {
-
-        }
     }
 
     render() {

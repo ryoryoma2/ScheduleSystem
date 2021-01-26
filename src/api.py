@@ -1,5 +1,4 @@
 from flask import Flask,request,jsonify,make_response,render_template
-
 import psycopg2
 import sys
 sys.path.append('c:\\users\\ma2ryou\\appdata\\local\\programs\\python\\python38\\lib\\site-packages')
@@ -7,29 +6,22 @@ from flask_restful import Api, Resource
 from flask_cors import CORS
 import json
 
-
-
 """sql文
-CREATE TABLE public."DataAll"
+CREATE TABLE public."User"
 (
     "userID" integer NOT NULL,
-    name text COLLATE pg_catalog."default" NOT NULL,
-    passwd text COLLATE pg_catalog."default" NOT NULL,
+    name character varying COLLATE pg_catalog."default",
+    passwd character varying COLLATE pg_catalog."default" NOT NULL,
     address text COLLATE pg_catalog."default",
     phonenumber integer,
     "isStudent" boolean DEFAULT true,
-    "scheduleID" integer NOT NULL DEFAULT nextval('"DataAll_scheduleID_seq"'::regclass),
-    schedule date[],
-    "homeworkID" integer NOT NULL DEFAULT nextval('"DataAll_homeworkID_seq"'::regclass),
-    subject text COLLATE pg_catalog."default",
-    range text COLLATE pg_catalog."default",
-    classdays integer,
-    CONSTRAINT "DataAll_pkey" PRIMARY KEY ("userID")
+    classdays integer DEFAULT 4,
+    CONSTRAINT "User_pkey" PRIMARY KEY ("userID")
 )
 
 TABLESPACE pg_default;
 
-ALTER TABLE public."DataAll"
+ALTER TABLE public."User"
     OWNER to pgadmin;
 """
 
@@ -48,23 +40,17 @@ def after_request(response):
   response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
   return response
 
-# connect postgreSQL
-
-
 @app.route('/')
-def hello():
+def userInfo():
     query = ""
 
     if request.args.get('id') is not None:
         query = request.args.get('id')
         cur = conn.cursor()
         # cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ")
-        cur.execute('SELECT * FROM public."DataAll" Where "userID"={0}'.format(query))
+        cur.execute('SELECT * FROM public."User" Where "userID"={0}'.format(query))
         results = cur.fetchall()
 
-        # output result
-        #print(results)
-        # print(type(results[0]))
         name = results[0][1]
         iD = results[0][0]
         data = [
@@ -74,7 +60,7 @@ def hello():
             "address": results[0][3],
             "phonenumber":results[0][4],
              "isStudent":results[0][5],
-            "classdays":results[0][11]}
+            "classdays":results[0][6]}
         ]
 
         cur.close()
@@ -88,6 +74,7 @@ def hello():
             'data': ""
         })
 
+#UserのIDとPasswd表示
 @app.route('/getUser')
 def getUserandPasswd():
     queryID = ""
@@ -97,11 +84,9 @@ def getUserandPasswd():
         queryID = request.args.get('id')
         cur = conn.cursor()
         # cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ")
-        cur.execute('SELECT "userID","passwd" FROM public."DataAll" Where "userID"={0} '.format(queryID))
+        cur.execute('SELECT "userID","passwd" FROM public."User" Where "userID"={0} '.format(queryID))
         results = cur.fetchall()
 
-        # output result
-        # print(type(results[0]))
         id = results[0][0]
         password = results[0][1]
         #print(request.args.get('passwd'))
@@ -129,105 +114,116 @@ def getUserandPasswd():
             'data': ""
         })
 
-
-@app.route('/post' ,methods = ["POST"])
-def sendpost():
-    return jsonify({
-        'status': 'None id',
-        'data': request.form("userID")
-    })
-
+#UserのInsert
 @app.route('/create',methods= ["POST"])
 def create():
     queryID = ""
     queryname = ""
     querypass = ""
-    queryaddress =""
+    queryaddress = ""
     queryphonenumber =""
     queryisStudent = ""
-    queryscheduleID =""
-    schedule =""
-    queryhomeworkID =""
-    querysubject = ""
-    queryrange = ""
+    #Post通信のデータを受信
+    json = request.get_json();
 
-    if request.form('id') is not None and request.form('passwd') is not None:
-        queryID = request.form('id')
-        queryname = request.form('name')
-        querypass = request.form('passwd')
-        queryaddress = request.form('address')
-        queryphonenumber = request.form('phonenumber')
-        queryisStudent = request.form('isStudent')
-        queryscheduleID = request.form('scheduleID')
-        schedule = request.form('schedule')
-        queryhomeworkID = request.form('homeworkID')
-        querysubject = request.form('subject')
-        queryrange = request.form('range')
+    if json['data'][0]['userID'] is not None and json['data'][0]['passwd'] is not None:
+        queryID = json['data'][0]['userID']
+        queryname = json['data'][0]['name']
+        querypass = json['data'][0]['passwd']
+        queryaddress = json['data'][0]['address']
+        queryphonenumber = json['data'][0]['phonenumber']
+        queryisStudent = json['data'][0]['isStudent']
         cur = conn.cursor()
+
+        #INSERT_SQL = """INSERT INTO public."User" ("userID", name, passwd, address, "phonenumber", "isStudent") VALUES """
         # cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ")
-        cur.execute('INSERT INTO public."DataAll" VALUES('
-                    + queryID,queryname,querypass,queryaddress,queryphonenumber,queryisStudent,queryscheduleID,schedule,
-                    queryhomeworkID,querysubject,queryrange+')')
-        results = cur.fetchall()
+        try:
+            cur.execute('INSERT INTO public."User" ("userID", name, passwd, address, "phonenumber", "isStudent") VALUES' + str((queryID,queryname,querypass,queryaddress,queryphonenumber,queryisStudent)))
+            print((queryID,queryname,querypass,queryaddress,queryphonenumber,queryisStudent))
+            print(str(queryID)+",\'"+queryname+"\',\'"+querypass+"\',\'"+queryaddress+"\',"+str(queryphonenumber)+","+str(queryisStudent))
+        except Exception as e:
+            conn.rollback()
+        else:
+            conn.commit()
 
-        # output result
-        # print(type(results[0]))
-        id = results[0][0]
-        password = results[0][1]
-        #print(request.args.get('passwd'))
-        #print(queryID)
-
-        data = [
-            {"id": id},
-            {"password": password}
-         ]
-
+        results = cur.description
+        print(results)
+        result = 'Insert:ID' + str(queryID)
         cur.close()
+        conn.commit()
         return jsonify({
             'status': 'OK',
-            'data': data
+            'data': result
         })
     else:
         return jsonify({
-            'status': 'None id',
-            'data': ""
+            'status': 'CANNOT INSERT',
+            'data': "NO DATA"
         })
 
-@app.route('/a')
-def getSchedule():
+#Userのタプルを削除
+@app.route('/delete')
+def deleteUser():
     queryID =""
-    queryDATE=""
 
     if request.args.get('id') is not None:
         queryID = request.args.get('id')
         cur = conn.cursor()
+        print(queryID)
         # cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ")
-        cur.execute('SELECT id,passwd FROM public."User" Where id={0} '.format(queryID))
-        results = cur.fetchall()
+        cur.execute('DELETE FROM public."User" WHERE "userID"={0} '.format(queryID))
+        print('DELETE FROM public."User" WHERE "userID"={0} '.format(queryID))
+        results = cur.description
+        print(results)
+        cur.close()
+        conn.commit()
+        return jsonify({
+           'status': 'DELETED!',
+           'data': results
+        })
 
+    else:
+        return jsonify({
+        'status': 'None id',
+        'data': ""
+    })
+
+#Userの更新
+@app.route('/update', methods = ['POST'])
+def userUpdate():
+
+    queryID = ""
+    queryname = ""
+    querypass = ""
+    queryaddress = ""
+    queryphonenumber =""
+    queryclassdays = ""
+    json = request.get_json()
+
+    if json['data'][0]['userID'] is not None:
+        queryID = json['data'][0]['userID']
+        queryname = json['data'][0]['name']
+        queryaddress = json['data'][0]['address']
+        queryphonenumber = json['data'][0]['phonenumber']
+        queryclassdays = json['data'][0]['classdays']
+        cur = conn.cursor()
+        print(queryID)
+        # cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ")
+        cur.execute('UPDATE public."User" SET name = \''+ queryname + '\',address = \''
+                    +queryaddress +'\',phonenumber = '+ str(queryphonenumber)+',classdays = ' + str(queryclassdays) + ' WHERE "userID"=' + str(queryID))
+        print('UPDATE public."User" SET name = \''+ queryname + '\',address = \''
+                    +queryaddress +'\',phonenumber = '+ str(queryphonenumber)+',classdays = ' + str(queryclassdays) + ' WHERE "userID"=' + str(queryID))
+        results = cur.description
         # output result
         # print(type(results[0]))
-        id = results[0][0]
-        password = results[0][1]
         # print(request.args.get('passwd'))
         # print(queryID)
-        if password == request.args.get('passwd'):
-            data = [
-                {"id": id},
-                {"password": password}
-            ]
-
-            cur.close()
-            return jsonify({
-                'status': 'OK',
-                'data': data
-            })
-        else:
-            cur.close()
-            return jsonify({
-                'status': 'NO',
-                'data': ""
-            })
+        cur.close()
+        conn.commit()
+        return jsonify({
+           'status': 'UPDATEED!',
+           'data': results
+        })
 
     else:
         return jsonify({
