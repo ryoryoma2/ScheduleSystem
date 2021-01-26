@@ -4,7 +4,7 @@ import './Button.css';
 
 const Button = (props) => {
     return (
-        <div class="flex">
+        <div className="flex">
             <button
                 onClick={props.onClick}
                 id="Button"
