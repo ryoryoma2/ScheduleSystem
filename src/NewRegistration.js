@@ -140,7 +140,7 @@ class NewR extends React.Component {
                             <Button buttonname={'登録'} onClick={this.senddata} className="under_button" />
                         </div>
                         <div>
-                            <Button buttonname={'TOPに戻る'} linkname={"/"} className="under_button" />
+                            <Button buttonname={'ログインページに戻る'} linkname={"/"} className="under_button" />
                         </div>
                     </form>
                 </header>
