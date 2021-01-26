@@ -22,10 +22,10 @@ class ScheduleRegisterS extends Component {
             <div className="ScheduleRegisterS">
                 <Calendar></Calendar>
                 {/* データベースに登録する操作 */}
-                <Button buttonname={'日程登録'} linkname={"/TopScreenStudent"} className="under_button"/>
-                <Button buttonname={'日程確認'} linkname={"/ScheduleConfirmationS"} className="under_button"/>
+                <Button buttonname={'日程登録'} className="under_button" />
+                <Button buttonname={'日程確認'} linkname={"/ScheduleConfirmationS"} className="under_button" />
 
-                <Button buttonname={'Topに戻る'} linkname={"/TopScreenStudent"} className="under_button"/>
+                <Button buttonname={'Topに戻る'} linkname={"/TopScreenStudent"} className="under_button" />
             </div>
         );
     }

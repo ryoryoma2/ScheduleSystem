@@ -26,7 +26,7 @@ button.under_button{
 button.Login_under_button{
     bottom: 0;
     padding: 10px 15px;
-    width: 130px;
+    width: 150px;
     margin: 0px 40px;
     display: table-cell;
     justify-content: space-between;
