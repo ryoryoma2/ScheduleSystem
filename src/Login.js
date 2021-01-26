@@ -56,18 +56,18 @@ class Login extends React.Component {
         isStudent: res.data.data[0].isStudent
       });
     });
-    if (this.state.ID === this.state.id && this.state.isStudent === true && this.state.Password === this.state.passwd) {
+    if (this.state.ID == this.state.id && this.state.isStudent == true && this.state.Password == this.state.passwd) {
       this.setState({ loginlink: '/TopScreenStudent' })
-    } else if (this.state.ID === this.state.id && this.state.isStudent === false && this.state.Password === this.state.passwd) {
+    } else if (this.state.ID == this.state.id && this.state.isStudent == false && this.state.Password == this.state.passwd) {
       this.setState({ loginlink: '/TopScreenTeacher' })
     } else {
     }
   }
 
   determine_ID(e) {//idから生徒か講師か判別する
-    if (this.state.ID === this.state.id && this.state.isStudent === true && this.state.Password === this.state.passwd) {
+    if (this.state.ID == this.state.id && this.state.isStudent == true && this.state.Password == this.state.passwd) {
       this.setState({ loginlink: '/TopScreenStudent' })
-    } else if (this.state.ID === this.state.id && this.state.isStudent === false && this.state.Password === this.state.passwd) {
+    } else if (this.state.ID == this.state.id && this.state.isStudent == false && this.state.Password == this.state.passwd) {
       this.setState({ loginlink: '/TopScreenTeacher' })
     } else {
       alert("ログインできませんでした\nIDかパスワードを間違えていないか確認してください");
