@@ -39,7 +39,11 @@ class Login extends React.Component {
     this.setState({ Password: e.target.value });
   }
 
+<<<<<<< HEAD
   onBlur() {
+=======
+  onBlur(){
+>>>>>>> c562e244f36585a6974e70180360e03d5ad78c69
     const url = "http://69ab7befd210.ngrok.io/?id=1"
     var tempArray = url.split("?");
     var baseURL = tempArray[0];
@@ -89,7 +93,7 @@ class Login extends React.Component {
                 onChange={this.onTextAreaChange2} onBlur={this.onBlur} placeholder="ここに入力" /></p>
             </div>
 
-            <Button buttonname={'新規登録'} linkname={"/New registration"} className="Login_under_button"
+            <Button buttonname={'新規登録'} linkname={"/NewRegistration"} className="Login_under_button"
             />
 
             <Button buttonname={'ログイン'} onClick={this.determine_ID} linkname={this.state.loginlink} className="Login_under_button"
