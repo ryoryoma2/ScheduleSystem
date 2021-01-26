@@ -48,7 +48,7 @@ function homeworkValidator(value) {
 }
 
 function imageFormatter(cell) {
-    if (cell) { return (<img style={{ width: 50 }} src={cell} />) }
+    if (cell) { return (<img style={{ width: 50 }} src={cell} alt=""/>) }
     else return '未提出'
 }
 

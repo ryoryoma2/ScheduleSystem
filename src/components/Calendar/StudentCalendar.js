@@ -2,9 +2,11 @@ import React from 'react';
 import Calendar from 'react-calendar';
 
 //redux関係のインポート
+/*
 import { connect } from 'react-redux'
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+*/
 
 class Schedule_Calendar extends React.Component {
     constructor(props) {

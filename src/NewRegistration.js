@@ -101,19 +101,19 @@ class NewR extends React.Component {
                 <header className="Login-header">
                     <form onSubmit={this.onSubmit}>
                         <div>
-                            <div class="radio0">
+                            <div className="radio0">
 
                                 <input type="radio"
                                     name="radio1"
                                     value="true"
-                                    checked={this.state.radio1 == "true"}
+                                    checked={this.state.radio1 === "true"}
                                     onChange={this.onRadioChange}
                                     placeholder="ここに入力" /> 生徒　<br />
 
                                 <input type="radio"
                                     name="radio1"
                                     value="false"
-                                    checked={this.state.radio1 == "false"}
+                                    checked={this.state.radio1 === "false"}
                                     onChange={this.onRadioChange}
                                     placeholder="ここに入力" /> 講師　<br />
                             </div>
